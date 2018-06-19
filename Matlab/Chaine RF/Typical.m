@@ -13,9 +13,9 @@ AGC = component([6.8, 19.5], 7, 28, 21);
 recepteur = systeme([BP_RF, SPDT, LNA_RF, LNA_RF, LNA_RF, Mixer_RF, BP_IF, Mixer_IF, LP_IF, AGC]);
 recepteur.calculate();
 recepteur
-recepteur.diagram();
+recepteur.diagram('Récepteur');
 
 transmetteur = systeme([LP_IF, Mixer_IF, BP_IF, Mixer_RF, BP_RF, LNA_RF, SPDT, BP_RF]);
 transmetteur.calculate();
 transmetteur
-transmetteur.diagram();
+transmetteur.diagram('Émetteur');
