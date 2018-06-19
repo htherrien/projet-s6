@@ -45,18 +45,21 @@ classdef systeme < handle
             self.dataPointsSmall = [1 1 self.G]*self.minSig();
             
             Goffset = [1 self.G];
-            maxSigs = []; IP3 = 0;
+            maxSigs = [];
+            IP3 = 0;
             for i = 1:length(self.components)
                 if(~isnan(self.components(i).P))
                     maxSigs(end+1) = self.components(i).P / Goffset(i);
-                    IP3 = IP3 + 1/(self.components(i).IP3 / Goffset(i));
+                    if(~isnan(self.components(i).IP3))
+                        IP3 = IP3 + 1/(self.components(i).IP3 / Goffset(i));
+                    end
                 end
             end
             self.IP3 = 1/IP3;
             self.maxSig = min(maxSigs);
             self.dataPointsLarge = [1 1 self.G]*self.maxSig;
         end
-        function diagram(self)
+        function diagram(self,string)
             figure()
             ylabel('Puissance (dBm)')
             hold on
@@ -64,15 +67,19 @@ classdef systeme < handle
             plot(xStep, mag2dbPow(self.dataPointsSmall) + 30)
             plot(xStep, mag2dbPow(self.dataPointsLarge) + 30)
             for i = 1:length(self.components)
+                plot([xStep(i+1),xStep(i+2)], mag2dbPow([self.components(i).Pmax self.components(i).Pmax]) + 30,'b')       %Plotting max input power lines
                 if ~isnan(self.components(i).P)
                     P = max([self.components(i).P self.components(i).P*self.components(i).G]);
-                    plot([xStep(i+1),xStep(i+2)], mag2dbPow([P P]) + 30,'k')
+                    plot([xStep(i+1),xStep(i+2)], mag2dbPow([P P]) + 30,'k')       %Plotting compression points lines
                 end
             end
-            for i = 2:length(self.dataPointsSmall)
-                plot([xStep(i),xStep(i)], mag2dbPow([0.9*min(self.NO), 100*max(self.dataPointsLarge)]) + 30,'k--')
+            for i = 2:length(self.dataPointsSmall)      
+                plot([xStep(i),xStep(i)], mag2dbPow([0.9*min(self.NO), 100*max(self.dataPointsLarge)]) + 30,'k--')      %plotting dashed vertical dashed line
             end
-            legend('Bruit', 'Signal minimum', 'Signal maximum', 'Points de compression')
+            legend('Bruit', 'Signal minimum', 'Signal maximum', 'Puissance maximale', 'Points de compression')
+            if (nargin ~= 1)
+            title(string);
+            end
         end
         function Gr = calculateAntenna(self, Gadj, Pt)
             lambda = self.c/self.f;
