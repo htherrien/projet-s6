@@ -28,6 +28,7 @@ unsigned short dsp_state=0;
 void afficher_resultats();  //propre au arduino
 unsigned int lecture_registre(short nb_bytes,unsigned short cmd_hdr); //dequoi de similaire pour notre application Atmel
 void enable_dsp();  //enable le dsp (RUN=1)
+void ecriture_registre(short nb_bytes,unsigned short cmd_hdr,unsigned int val);
 
 void setup() {
   Serial.begin(9600); //pour la console avec arduino
@@ -37,11 +38,27 @@ void setup() {
   SPI.begin();
   SPI.setDataMode (SPI_MODE3);  //voir datasheet ADE. Clock idle high et les bits sont lues sur les fronts montants
   pinMode(chipSelect,OUTPUT);
-  enable_dsp();
+  
+  //Configuration du ADE9000
+  
+  //config fréquence
+  //config Vlevel nominal
+  //disable no load timer
+
+  
+  enable_dsp(); //dernière étape de la config du ADE9000
+
+  temp=lecture_registre(2,LAST_CMD);
+  temp=lecture_registre(2,RUN_CMD);
+  temp=lecture_registre(2,LAST_CMD);
+  temp=lecture_registre(4,0x4728);  //lecture bidon pour vérifier le fonctionnement
+  temp=lecture_registre(2,LAST_CMD);
+  
 }
 
 void loop() {
-  
+
+  delay(50);
   if (millis()>last_millis+TIMER_LECTURE) //vérification qui s'apparente à un Timer pour un environnement autre que Arduino
   {
     temp=lecture_registre(4,PF_CMD);
@@ -69,9 +86,46 @@ void enable_dsp()// (RUN=1)
   SPI.transfer(0x01); //enable DSP for mesurement
   digitalWrite(chipSelect,HIGH);
 }
+void ecriture_registre(short nb_bytes,unsigned short cmd_hdr,unsigned int val)
+{
+  // cmd_hdr: 16bits non signé incluant le bit3=0 pour le write
+  //val: 32bits non signé contenant la valeur à inscrire. Si 16 bits à écrire: 0xXXXX3210 où X est un don't care
+  byte msb=cmd_hdr>>8;
+  byte lsb=(cmd_hdr<<8)>>8;
+  byte byte1=0;
+  byte byte2=0;
+  byte byte3=0;
+  byte byte4=0;
+  
+  if (nb_bytes==2)  //isole les bytes
+  {
+    byte1=(val<<16)>>24;
+    byte2=(val<<24)>>24;
+  }
+  else if(nb_bytes==4)  //isole les bytes
+  {
+    byte1=val>>24;
+    byte2=(val<<8)>>24;
+    byte3=(val<<16)>>24;
+    byte4=(val<<24)>>24;
+  }
+
+  digitalWrite(chipSelect,LOW);
+  SPI.transfer(msb);  //le command header
+  SPI.transfer(lsb);
+
+  SPI.transfer(byte1);  //la valeur à écrire
+  SPI.transfer(byte2);
+  if (nb_bytes==4)
+  {
+    SPI.transfer(byte3);
+    SPI.transfer(byte4);
+  }
+  digitalWrite(chipSelect,HIGH);
+}
 unsigned int lecture_registre(short nb_bytes,unsigned short cmd_hdr)  //faire quelque chose de similaire pour notre application
 {
-  //cmd_hdr doit inclure le bit Read, la fonction ne l'ajoute pas
+  // cmd_hdr: 16bits non signé incluant le bit3=1 pour le read
   
   unsigned int result=0;
   byte newbyte=0;
