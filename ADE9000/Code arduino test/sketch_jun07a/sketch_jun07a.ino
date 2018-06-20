@@ -14,6 +14,12 @@
 #define RUN_CMD 0x4808
 #define LAST_CMD  0x4AE8
 
+#define ACCMODE_CMD_WRITE 0x4920
+#define ACCMODE_CMD_READ 0x4928
+#define VLEVEL_CMD  0x40F0
+#define EP_CFG_CMD_WRITE  0x4B00
+#define EP_CFG_READ 0x4B08
+
 float THD=0;  //en %
 float PF=0;
 
@@ -22,6 +28,7 @@ float PF=0;
 #define TIMER_LECTURE 1000  //en ms
 long last_millis=0; //permet de faire comme un timer qui ne bloque pas le code (voir fonction millis() d'arduino)
 unsigned int temp=0;
+unsigned short temp16=0;
 unsigned short dsp_state=0;
 
 //Les prototypes
@@ -40,11 +47,13 @@ void setup() {
   pinMode(chipSelect,OUTPUT);
   
   //Configuration du ADE9000
+  temp16=lecture_registre(2,ACCMODE_CMD_READ);  //config fréquence
+  ecriture_registre(2,ACCMODE_CMD_WRITE,temp16|0x0100);
   
-  //config fréquence
-  //config Vlevel nominal
-  //disable no load timer
-
+  ecriture_registre(4,VLEVEL_CMD,0x00117514);//config VLEVEL nominal (1Vp)
+  
+  temp16=lecture_registre(2,EP_CFG_READ);//disable no load timer
+  ecriture_registre(2,EP_CFG_CMD_WRITE,temp16|0xE000);
   
   enable_dsp(); //dernière étape de la config du ADE9000
 
@@ -86,7 +95,7 @@ void enable_dsp()// (RUN=1)
   SPI.transfer(0x01); //enable DSP for mesurement
   digitalWrite(chipSelect,HIGH);
 }
-void ecriture_registre(short nb_bytes,unsigned short cmd_hdr,unsigned int val)
+void ecriture_registre(short nb_bytes,unsigned short cmd_hdr,unsigned int val)//faire quelque chose de similaire pour notre application
 {
   // cmd_hdr: 16bits non signé incluant le bit3=0 pour le write
   //val: 32bits non signé contenant la valeur à inscrire. Si 16 bits à écrire: 0xXXXX3210 où X est un don't care
@@ -97,7 +106,7 @@ void ecriture_registre(short nb_bytes,unsigned short cmd_hdr,unsigned int val)
   byte byte3=0;
   byte byte4=0;
   
-  if (nb_bytes==2)  //isole les bytes
+  if (nb_bytes==2)  //isole les bytes et supprime les don't care qui seraient non-nul
   {
     byte1=(val<<16)>>24;
     byte2=(val<<24)>>24;
@@ -149,7 +158,7 @@ unsigned int lecture_registre(short nb_bytes,unsigned short cmd_hdr)  //faire qu
   return result;
 }
 
-void afficher_resultats()
+void afficher_resultats() //propre au arduino
 {
   Serial.print('\n');
   Serial.print("Le taux de distorsion harmonique (%): ");
@@ -163,5 +172,3 @@ void afficher_resultats()
   Serial.print(dsp_state);
   Serial.print('\n');
 }
-
-
