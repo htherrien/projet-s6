@@ -54,3 +54,6 @@ dkms.conf
 # Autosave files
 *~
 *.asv
+
+# OS generated files
+*.ini
