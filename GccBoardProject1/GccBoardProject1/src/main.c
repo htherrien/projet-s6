@@ -1,10 +1,11 @@
 /*
- * Include header files for all drivers that have been imported from
- * Atmel Software Framework (ASF).
- */
-/*
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
+ * Copyright (c) Projet S6, Équipe P4
+ */ 
+
+#include <avr/io.h>
+#include <avr/fuse.h>
+
+#include <stdbool.h>
 
 #define SPI_MASTER	0
 #define SPI_SLAVE	1
@@ -17,15 +18,8 @@
 #define P6 64
 #define P7 128
 
-
-
-
-
-#include <asf.h>
 void port_init(void);
 void spi_init(bool);
-
-
 
 int main (void)
 {
