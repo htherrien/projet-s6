@@ -4,18 +4,16 @@
  *
  ******************************************************************************/
 
-/*******************************************************************************
+/**
  * @file Commands.h
- *
- * Interface for reading, writing and initializing the ADE9000.
- *
- ******************************************************************************/
+ * @brief Interface for reading, writing and initializing the ADE9000.
+ */
 
 #pragma once
 
 #include <stdint.h>
 
-/*
+/**
  * Send data to the specified ADE9000 address using SPI.
  * Consider using ADE9000Write[16|32] instead.
  * @param[in] address the address, in 0xFFF (12-bit) format, where the data
@@ -42,7 +40,7 @@
  */
 void ADE9000Write(uint16_t address, size_t n, const uint8_t* data);
 
-/*
+/**
  * Send 16 bits of data to the specified ADE9000 address using SPI.
  * @param[in] address the address, in 0xFFF (12-bit) format, where the data
  *            will be written.
@@ -50,7 +48,7 @@ void ADE9000Write(uint16_t address, size_t n, const uint8_t* data);
  */
 void ADE9000Write16(uint16_t address, uint16_t data);
 
-/*
+/**
  * Send 32 bits of data to the specified ADE9000 address using SPI.
  * @param[in] address the address, in 0xFFF (12-bit) format, where the data
  *            will be written.
@@ -58,7 +56,7 @@ void ADE9000Write16(uint16_t address, uint16_t data);
  */
 void ADE9000Write32(uint16_t address, uint32_t data);
 
-/*
+/**
  * Read data from the specified ADE9000 address using SPI.
  * Consider using ADE9000Read[16|32] instead.
  * @param[in]  address the address, in 0xFFF (12-bit) format, from which the
@@ -79,7 +77,7 @@ void ADE9000Write32(uint16_t address, uint32_t data);
  */
 void ADE9000Read(uint16_t address, size_t n, uint8_t* data);
 
-/*
+/**
  * Read 16 bits of data from the specified ADE9000 address using SPI.
  * @param[in] address the address, in 0xFFF (12-bit) format, from which the
  *            data will be read.
@@ -87,15 +85,15 @@ void ADE9000Read(uint16_t address, size_t n, uint8_t* data);
  */
 uint16_t ADE9000Read16(uint16_t address);
 
-/*
+/**
  * Read 32 bits of data from the specified ADE9000 address using SPI.
  * @param[in] address the address, in 0xFFF (12-bit) format, from which the
  *            data will be read.
- * @return    the 32 bits read from the ADE9000
+ * @return    the 32 bits read from the ADE9000 
  */
 uint32_t ADE9000Read32(uint16_t address);
 
-/*
+/**
  * Configures the ADE9000 chip for reading data
  */
 void ADE9000Setup(void);
