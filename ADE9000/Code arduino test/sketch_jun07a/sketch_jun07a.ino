@@ -10,6 +10,8 @@
 
 #define PF_CMD 0x2168
 #define THD_CMD 0x2178
+#define AVRMS_CMD 0x20D8
+#define AIRMS_CMD 0x20C8
 #define ACCMODE_CMD 0x4928
 #define RUN_CMD 0x4808
 #define LAST_CMD  0x4AE8
@@ -21,6 +23,8 @@
 #define EP_CFG_READ 0x4B08
 #define CONFIG0_CMD_READ  0x0608
 #define CONFIG0_CMD_WRITE 0x0600
+
+#define STATUS0_CMD 0x4028
 
 #define CONV 0.000000007450580597
 
@@ -72,18 +76,21 @@ void loop() {
   delay(50);
   if (millis()>last_millis+TIMER_LECTURE) //vérification qui s'apparente à un Timer pour un environnement autre que Arduino
   {
-    temp=lecture_registre(4,PF_CMD);
+    /*temp=lecture_registre(4,PF_CMD);
     PF=(float)temp * CONV;
     delay(1);
     temp=lecture_registre(4,THD_CMD);
     THD=(float)temp * 100 * CONV;
-    delay(1);
+    delay(1);*/
     dsp_state=lecture_registre(2,RUN_CMD);
     delay(1);
     temp=lecture_registre(2,LAST_CMD);
-    
+    PF=lecture_registre(4,AVRMS_CMD);
+    THD=lecture_registre(4,AIRMS_CMD);
     afficher_resultats();
     last_millis=millis();
+
+    
   }
 }
 void enable_dsp()// (RUN=1)
