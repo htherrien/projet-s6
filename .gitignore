@@ -66,3 +66,4 @@ dkms.conf
 # Build
 [Dd]ebug/
 [Rr]elease/
+[Dd]oxygen
