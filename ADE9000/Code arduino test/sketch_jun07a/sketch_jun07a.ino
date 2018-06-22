@@ -12,24 +12,32 @@
 #define THD_CMD 0x2178
 #define AVRMS_CMD 0x20D8
 #define AIRMS_CMD 0x20C8
-#define ACCMODE_CMD 0x4928
-#define RUN_CMD 0x4808
+#define RUN_CMD 0x4808  //pour enable le DSP
 #define LAST_CMD  0x4AE8
-
-#define ACCMODE_CMD_WRITE 0x4920
+#define ACCMODE_CMD_WRITE 0x4920  //pour set la fréquence fondammentale
 #define ACCMODE_CMD_READ 0x4928
-#define VLEVEL_CMD  0x40F0
-#define EP_CFG_CMD_WRITE  0x4B00
-#define EP_CFG_READ 0x4B08
+#define VLEVEL_CMD  0x40F0  //pour set niveau nominal tension
+
+#define EP_CFG_CMD_WRITE  0x4B00  //pour disable le no load timer et enable power accumulation
+#define EP_CFG_CMD_READ 0x4B08 
+
 #define CONFIG0_CMD_READ  0x0608
 #define CONFIG0_CMD_WRITE 0x0600
-
 #define STATUS0_CMD 0x4028
+#define ZX_LP_SEL_CMD_WRITE 0x49A0  //pour set la mesure de periode sur 1 seule phase
+#define ZX_LP_SEL_CMD_READ  0x49A8
 
-#define CONV 0.000000007450580597
+#define CONV_PF_THD 0.000000007450580597
+#define FULL_SCALE_I_V  52702092
+#define V_NOMINAL 120
+#define V_CORR  1.188 //facteur correction pour que la "tension nominal" soit lu avec le condo de 10uF
+#define I_NOMINAL 5
+#define I_CORR  1.1 //facteur correction pour que le "courant nominal" soit lu avec le condo de 10uF
 
 float THD=0;  //en %
 float PF=0;
+float I=0;
+float V=0;
 
 //Les constantes et variables pour le arduino
 #define chipSelect 6
@@ -37,7 +45,6 @@ float PF=0;
 unsigned long last_millis=0; //permet de faire comme un timer qui ne bloque pas le code (voir fonction millis() d'arduino)
 unsigned long temp=0;
 unsigned short temp16=0;
-unsigned short dsp_state=0;
 
 //Les prototypes
 void afficher_resultats();  //propre au arduino
@@ -60,14 +67,16 @@ void setup() {
   
   ecriture_registre(4,VLEVEL_CMD,0x00117514);//config VLEVEL nominal (1Vp)
   
-  temp16=lecture_registre(2,EP_CFG_READ);//disable no load timer
+  temp16=lecture_registre(2,EP_CFG_CMD_READ);//disable no load timer
   ecriture_registre(2,EP_CFG_CMD_WRITE,(temp16|0xE000));
+
+  temp16=lecture_registre(2,ZX_LP_SEL_CMD_READ);  //set la phase A comme référence pour la mesure de la période
+  ecriture_registre(2,ZX_LP_SEL_CMD_WRITE,(temp16&&0xFFC0));
   
   enable_dsp(); //dernière étape de la config du ADE9000
 
-  temp=lecture_registre(2,LAST_CMD);  //2 étapes inutiles pour voir le fonctionnement au logic analyser
-  temp=lecture_registre(2,RUN_CMD);
-
+  temp16=lecture_registre(2,EP_CFG_CMD_READ);//enable power accumulation (ne pas faire en même temps que le no-load timer)
+  ecriture_registre(2,EP_CFG_CMD_WRITE,(temp16|0x0001));
   
 }
 
@@ -76,17 +85,17 @@ void loop() {
   delay(50);
   if (millis()>last_millis+TIMER_LECTURE) //vérification qui s'apparente à un Timer pour un environnement autre que Arduino
   {
-    /*temp=lecture_registre(4,PF_CMD);
-    PF=(float)temp * CONV;
-    delay(1);
+    temp=lecture_registre(4,PF_CMD);
+    PF=(float)temp * CONV_PF_THD;
     temp=lecture_registre(4,THD_CMD);
-    THD=(float)temp * 100 * CONV;
-    delay(1);*/
-    dsp_state=lecture_registre(2,RUN_CMD);
-    delay(1);
-    temp=lecture_registre(2,LAST_CMD);
-    PF=lecture_registre(4,AVRMS_CMD);
-    THD=lecture_registre(4,AIRMS_CMD);
+    THD=(float)temp * 100 * CONV_PF_THD;
+    
+    temp=lecture_registre(4,AVRMS_CMD); //lecture tension
+    V=((float)temp/(float)FULL_SCALE_I_V)*V_NOMINAL*V_CORR;
+    
+    temp=lecture_registre(4,AIRMS_CMD); //lecture courant
+    I=((float)temp/(float)FULL_SCALE_I_V)*I_NOMINAL*I_CORR;
+    
     afficher_resultats();
     last_millis=millis();
 
@@ -170,14 +179,20 @@ unsigned long lecture_registre(short nb_bytes,unsigned short cmd_hdr)  //faire q
 void afficher_resultats() //propre au arduino
 {
   Serial.print('\n');
-  Serial.print("Le taux de distorsion harmonique (%): ");
+  Serial.print("Le taux de distorsion harmonique : ");
   Serial.print(THD,3);
+  Serial.print(" %");
   Serial.print('\n');
   Serial.print("Le facteur de puissance: ");
   Serial.print(PF,3);
   Serial.print('\n');
-  
-  Serial.print("DSP state : ");
-  Serial.print(dsp_state);
+  Serial.print("La tension: ");
+  Serial.print(V,3);
+  Serial.print(" V");
   Serial.print('\n');
+  Serial.print("Le courant: ");
+  Serial.print(I,3);
+  Serial.print(" A");
+  Serial.print('\n');
+  
 }
