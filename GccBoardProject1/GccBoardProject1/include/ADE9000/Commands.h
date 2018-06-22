@@ -20,11 +20,7 @@
  *            will be written.
  * @param[in] n the number of bytes to write. Either 2 or 4 bytes.
  *            Verify the number using the datasheet.
- * @param[in] data the data that will be written. Points to the LSB so that on
- *            big endian machines this can be done:
- *
- *                uint16_t buffer = 0x1234;
- *                uint8_t* data = (uint8_t*) &buffer;
+ * @param[in] data the data that will be written. Points to the LSB.
  *
  *            Data sent to the ADE9000 will be sent MSB first.
  *
