@@ -21,7 +21,6 @@
  * @param[in] n the number of bytes to write. Either 2 or 4 bytes.
  *            Verify the number using the datasheet.
  * @param[in] data the data that will be written. Points to the LSB.
- *
  *            Data sent to the ADE9000 will be sent MSB first.
  *
  *            memory layout example (32-bit) :
