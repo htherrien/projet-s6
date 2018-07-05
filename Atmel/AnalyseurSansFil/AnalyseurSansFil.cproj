@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>GccBoardProject1</AssemblyName>
-    <Name>GccBoardProject1</Name>
-    <RootNamespace>GccBoardProject1</RootNamespace>
+    <AssemblyName>AnalyseurSansFil</AssemblyName>
+    <Name>AnalyseurSansFil</Name>
+    <RootNamespace>AnalyseurSansFil</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
