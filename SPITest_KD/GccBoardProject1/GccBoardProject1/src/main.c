@@ -23,6 +23,7 @@
 #include <spi_megarf.h>
 #include <util/delay.h>
 #include <avr/io.h>
+#include <avr/cpufunc.h>
 
 
 void port_init(void);
@@ -35,52 +36,24 @@ void ecriture_registre(short nb_bytes,unsigned short cmd_hdr,unsigned long val);
 unsigned long lecture_registre(short nb_bytes,unsigned short cmd_hdr);
 
 
-/*
-    FUSES =
-    {
-	    .low = (FUSE_CKSEL_SUT0 & FUSE_CKSEL_SUT2 & FUSE_CKSEL_SUT3 & FUSE_CKSEL_SUT4),
-	    .high = HFUSE_DEFAULT,
-	    .extended = EFUSE_DEFAULT,
-    };
-*/
+
 
 int main (void)
 {
+	
 	/* Insert system clock initialization code here (sysclk_init()). */
 	// The XTAL on the dev board is 16MHZ
-
+	port_init();
 	board_init();
 	spi_init(SPI_MASTER);
-	// -----
-	DDRD |= P4;
-	
-	//-------
 	spi_enableK();
 	
 	while(1)
 	{
-		 _delay_ms(25);
-		PORTD &= ~P4;	//SS set to low
-		spi_putK(0x48);
-		/* Wait for transmission complete */
-		while(!(SPSR & (1<<SPIF)))
-		spi_putK(0x00);
-		/* Wait for transmission complete */
-		while(!(SPSR & (1<<SPIF)))
-		spi_putK(0x00);
-		/* Wait for transmission complete */
-		while(!(SPSR & (1<<SPIF)))
-		spi_putK(0x01);
-		/* Wait for transmission complete */
-		while(!(SPSR & (1<<SPIF)))
-		PORTD |= P4;	//SS set to high
-		
-		
+	ecriture_registre(2,0x4800,0x0000);
+	ecriture_registre(4,0x4800,0x00021211);
 	}
-	
-	
-	/* Insert application code here, after the board has been initialized. */
-	
+
 	
 }
 
@@ -110,7 +83,7 @@ void port_init()
 void spi_init(bool TYPE)
 {
 	/*
-	PB0 Slave select (ATmega256RFR2 is Master)
+	PD6 Slave select (ATmega256RFR2 is Master)
 	PB1 SPI SCK (Clock Out)
 	PB2 SPI MOSI (Master Out, Slave in)
 	PB3 SPI MISO (Master In, Slave Out)
@@ -122,32 +95,35 @@ void spi_init(bool TYPE)
 	if (TYPE == SPI_SLAVE)
 	{
 		// -- Port config -- 
+		DDRD &= ~P6;			//Setting PD6 as an input;
 		DDRB &= 0xF0;			//Reseting previous config on PB0-PB3
 		DDRB |= P3;				//Configuring as output
 		
 		// -- Control register config --
 		SPCR = 0x00;
-		SPCR |= P3|P2|P0;		//SPI mode 3 is selected (CPHA et CPOL = 1) //Clock configured as Fosc/16 in case it's the XTAL frequency, must be confirmed
-		
+		SPCR |= P3|P2|P0;		//SPI mode 3 is selected (CPHA et CPOL = 1) //Clock configured as Fosc/16
+		SPSR |= P0;				//Double the clock frequency to bring it to Fosc/8
 
 	}
 	else //MASTER == true
 	{
 		// -- Port config -- 
 		DDRB &= 0xF0;			//Reseting previous config on PB0-PB3
-		DDRB |= P2|P1|P0;		//Configuring as output
+		DDRB |= P2|P1;			//Configuring as output
+		DDRD |= P6;				//Configuring as output
 	}
 		
 		// -- Control register config --
 		SPCR = 0x00;
 		SPCR |= P4|P3|P2|P0;	//Clock configured as Fosc/16 in case it's the XTAL frequency, must be confirmed
+		SPSR |= P0;				//Double the clock frequency to bring it to Fosc/8
 }
 
 void spi_enableK(void)
 {
 	int dummy_read = 0;
 	
-	PORTB |= P0;	//SS set to high
+	PORTD |= P6;	//SS set to high
 	SPCR |= P6;
 	dummy_read = SPSR;
 	dummy_read = SPDR;	
@@ -156,7 +132,7 @@ void spi_enableK(void)
 void spi_disableK(void)
 {
 	SPCR &= ~P6;
-	PORTB &= ~P0;	//SS set to high
+	PORTD &= ~P6;	//SS set to high
 }
 	
 // -- Copié du Arduino --
@@ -185,19 +161,30 @@ void ecriture_registre(short nb_bytes,unsigned short cmd_hdr,unsigned long val)
 		byte3=(val<<16)>>24;
 		byte4=(val<<24)>>24;
 	}
-	PORTB &= ~P0;	//SS set to low
+	PORTD &= ~P6;	//SS set to low
 	
 	spi_putK(msb);  //le command header
+	// Wait for transmission complete 
+	while(!(SPSR & (1<<SPIF)));
 	spi_putK(lsb);
-
+	// Wait for transmission complete 
+	while(!(SPSR & (1<<SPIF)));
 	spi_putK(byte1);  //la valeur à écrire
+	// Wait for transmission complete 
+	while(!(SPSR & (1<<SPIF)));
 	spi_putK(byte2);
+	// Wait for transmission complete 
+	while(!(SPSR & (1<<SPIF)));
 	if (nb_bytes==4)
 	{
 		spi_putK(byte3);
+		// Wait for transmission complete 
+		while(!(SPSR & (1<<SPIF)));
 		spi_putK(byte4);
+		// Wait for transmission complete 
+		while(!(SPSR & (1<<SPIF)));
 	}
-	PORTB |= P0;	//SS set to high
+	PORTD |= P6;	//SS set to high
 }
 
 unsigned long lecture_registre(short nb_bytes,unsigned short cmd_hdr)  //faire quelque chose de similaire pour notre application
@@ -209,20 +196,25 @@ unsigned long lecture_registre(short nb_bytes,unsigned short cmd_hdr)  //faire q
 	uint8_t msb=cmd_hdr>>8;
 	uint8_t lsb=(cmd_hdr<<8)>>8;
 	
-	PORTB &= ~P0;	//SS set to low
+	PORTD &= ~P6;	//SS set to low
 	spi_putK(msb);
+	// Wait for transmission complete 
+	while(!(SPSR & (1<<SPIF)));
 	spi_putK(lsb);
-	result= spi_getK();  //écriture bidon pour lire
+	// Wait for transmission complete 
+	while(!(SPSR & (1<<SPIF)));
+	
+	result= spi_getK();				//Valider si il faut envoyer une trame bidon
 	nb_bytes--;
 
 	while (nb_bytes>0)
 	{
-		result = result<<8; //decale tout d'un uint8_t
-		newbyte = spi_getK();
-		result=result | newbyte;  //combine le vieux stock avec le newbyte
+		result = result<<8;			//decale tout d'un uint8_t
+		newbyte = spi_getK();		//Valider si il faut envoyer une trame bidon
+		result=result | newbyte;	//combine le vieux stock avec le newbyte
 		nb_bytes--;
 	}
-	PORTB |= P0;	//SS set to high
+	PORTB |= P6;	//SS set to high
 	return result;
 }
 	
