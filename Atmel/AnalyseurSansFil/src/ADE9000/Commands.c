@@ -12,6 +12,10 @@
 #include <stdint.h>
 #include <assert.h>
 
+#include <avr/io.h>
+
+#include "SPI.h"
+
 #include "ADE9000/Addresses.h"
 #include "ADE9000/Commands.h"
 
@@ -36,15 +40,22 @@ void ADE9000Write(uint16_t address, size_t n, const uint8_t* data)
     // Precondition
     assert(address <= 0xFFF);
 
-    // @TODO hugo: send address MSB first
-    // uint8_t address_high = (address >> 4);
-    // uint8_t address_low = (address << 4) & 0xF7;
+    // Send address MSB first
+    uint8_t address_high = (address >> 4);
+    uint8_t address_low = (address << 4) & 0xF7; // Reset the address read bit
+
+    SpiBeginTransfer();
+
+    SpiWriteByte(address_high);
+    SpiWriteByte(address_low);
 
     // Write MSB first
     while(n--)
     {
-        // @TODO hugo: write from data[n] to SPI bus
+        SpiWriteByte(data[n]);
     }
+
+    SpiEndTransfer();
 }
 
 void ADE9000Write16(uint16_t address, uint16_t data)
@@ -64,14 +75,23 @@ void ADE9000Read(uint16_t address, size_t n, uint8_t* data)
     // Precondition
     assert(address <= 0xFFF);
 
-    // @TODO hugo: send address MSB first
-    // uint8_t address_high = (address >> 4);
-    // uint8_t address_low = ((address << 4) | 0x08);
+    // Send address MSB first
+    uint8_t address_high = (address >> 4);
+    uint8_t address_low = ((address << 4) | 0x08); // Set the address read bit
 
+    SpiBeginTransfer();
+
+    SpiWriteByte(address_high);
+    SpiWriteByte(address_low);
+
+    // Read MSB first
     while(n--)
     {
-        // @TODO hugo: read form SPI bus into data[n]
+        SpiWriteByte(0x00); // dummy write
+        data[n] = SpiReadByte();
     }
+
+    SpiEndTransfer();
 }
 
 uint16_t ADE9000Read16(uint16_t address)
