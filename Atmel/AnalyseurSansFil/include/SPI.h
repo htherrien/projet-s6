@@ -14,18 +14,18 @@
 #include <stdint.h>
 
 /**
- * Configure the SPI bus as a SPI master in mode 3
+ * Configures the SPI bus as a SPI master in mode 3
  * On the ATmega256RFR2 Xplained Pro devkit, the SPI is configured to be used
  * on the EXT5 header:
  *
- *     EXT5         SPI bus
+ *     EXT5         SPI slave
  *     +-----+      +----+
- *     |PIN15| <==> |SS  |
- *     |PIN16| <==> |MOSI|
- *     |PIN17| <==> |MISO|
- *     |PIN18| <==> |SCK |
- *     |PIN19| <==> |GND |
- *     +-----+      +----+
+ *     |PIN15|------|SS  |
+ *     |PIN16|------|MOSI|
+ *     |PIN17|------|MISO|
+ *     |PIN18|------|SCK |
+ *     |PIN19|------|GND |
+ *     +-----+      +----+ 
  *
  * @note No pull-ups are needed
  */

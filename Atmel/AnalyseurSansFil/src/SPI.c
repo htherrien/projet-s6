@@ -24,9 +24,9 @@ void SpiInitMaster(void)
     DDRD |= _BV(6);  // Set SS as output
 
     // SPI control register
-    SPCR = 0x00;             // Disable and reset SPI
+    SPCR = 0x00;             // Disable and reset the SPI peripheral
     SPCR |= _BV(4);          // Put SPI in master mode
-    SPCR |= _BV(3) | _BV(2); // CPOL = 1, CPHA = 1 (mode 3)
+    SPCR |= _BV(3) | _BV(2); // CPOL = 1, CPHA = 1 (SPI mode 3)
     SPCR |= _BV(0);          // SCK = Fosc/16
 }
 
@@ -51,7 +51,7 @@ void SpiWriteByte(uint8_t byte)
     }
 }
 
-inline uint8_t SpiReadByte(void)
+uint8_t SpiReadByte(void)
 {
     assert(SPSR & (1 << SPIF)); // Make sure there is data to be read
     return SPDR;
