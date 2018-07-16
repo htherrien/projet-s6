@@ -17,10 +17,10 @@
 #include <avr/io.h>
 #include <avr/fuse.h>
 
-FUSES = {
-    
-    .low = (FUSE_CKSEL_SUT0 & FUSE_CKSEL_SUT2 & FUSE_CKSEL_SUT3 &
-            FUSE_CKSEL_SUT4), 
-    .high = HFUSE_DEFAULT,
-    .extended = EFUSE_DEFAULT,
-};
+//FUSES = {
+//    
+//    .low = (FUSE_CKSEL_SUT0 & FUSE_CKSEL_SUT2 & FUSE_CKSEL_SUT3 &
+//            FUSE_CKSEL_SUT4), 
+//    .high = HFUSE_DEFAULT,
+//    .extended = EFUSE_DEFAULT,
+//};
