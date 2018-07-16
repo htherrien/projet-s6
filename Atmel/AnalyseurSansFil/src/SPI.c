@@ -23,23 +23,30 @@ void SpiInitMaster(void)
     DDRB &= ~_BV(3); // Set MISO as input
     DDRD |= _BV(6);  // Set SS as output
 
+    PORTD |= _BV(6); // Set SS to high
+
     // SPI control register
     SPCR = 0x00;             // Disable and reset the SPI peripheral
     SPCR |= _BV(4);          // Put SPI in master mode
     SPCR |= _BV(3) | _BV(2); // CPOL = 1, CPHA = 1 (SPI mode 3)
     SPCR |= _BV(0);          // SCK = Fosc/16
+
+    SPSR |= _BV(0);          // Doubles SPI clock frequency
+
+    uint8_t dummy = SPSR;    // Clear the interrupts of the peripheral
+    dummy = SPDR;            // Clear the last value on the peripheral
 }
 
 void SpiBeginTransfer(void)
 {
-    PORTD |= _BV(6); // Set SS to high
-    SPCR |= _BV(6);  // Enable SPI peripheral
+    SPCR |= _BV(6);   // Enable SPI peripheral
+    PORTD &= ~_BV(6); // Set SS to low
 }
 
 void SpiEndTransfer(void)
 {
-    SPCR &= ~_BV(6);  // Disable SPI peripheral
-    PORTD &= ~_BV(6); // Set SS to low
+    PORTD |= _BV(6); // Set SS to high
+    SPCR &= ~_BV(6); // Disable SPI peripheral
 }
 
 void SpiWriteByte(uint8_t byte)

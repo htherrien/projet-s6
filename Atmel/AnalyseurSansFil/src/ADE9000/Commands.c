@@ -110,6 +110,16 @@ uint32_t ADE9000Read32(uint16_t address)
 
 void ADE9000Setup(void)
 {
+    // Configure the ADE9000 for 60Hz
+    ADE9000Write16(ADDR_ACCMODE, ADE9000Read16(ADDR_ACCMODE) | 0x0100);
+    // Configure nominal VLEVEL to 1Vp
+    ADE9000Write32(ADDR_VLEVEL, 0x00117514);
+    // Disable no load threshold timer
+    ADE9000Write16(ADDR_EP_CFG, ADE9000Read16(ADDR_EP_CFG) | 0xE000);
+    // Set phase A as reference for phase measurements
+    ADE9000Write16(ADDR_ZX_LP_SEL, ADE9000Read16(ADDR_ZX_LP_SEL) & 0xFFC1);
     // Enable measurements
     ADE9000Write16(ADDR_RUN, ENABLE_DSP);
+    // Enable power accumulation
+    ADE9000Write16(ADDR_EP_CFG, ADE9000Read16(ADDR_EP_CFG) | 0x0001);
 }
