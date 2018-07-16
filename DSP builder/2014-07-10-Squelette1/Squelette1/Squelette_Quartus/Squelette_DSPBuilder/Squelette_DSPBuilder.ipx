@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+ <!--  date: 2014.07.10.07:25:24 -->
+ <component
+   name="Squelette_DSPBuilder"
+   file="Squelette_DSPBuilder.slx"
+   displayName="Squelette_DSPBuilder"
+   version="1.0"
+   description="A DSP Builder System."
+   tags="AUTHORSHIP=DSPBuilder Design"
+   categories="DSPBuilder 7.1 Components"
+   factory="DSPBuilderFactory" />
+ <component
+   name="Squelette_DSPBuilder_Interface"
+   file="Squelette_DSPBuilder.slx"
+   displayName="Squelette_DSPBuilder_Interface"
+   version="1.0"
+   description="A DSP Builder System."
+   tags="AUTHORSHIP=DSPBuilder Design"
+   categories="DSPBuilder Systems"
+   factory="DSPBuilderFactory" />
+</library>

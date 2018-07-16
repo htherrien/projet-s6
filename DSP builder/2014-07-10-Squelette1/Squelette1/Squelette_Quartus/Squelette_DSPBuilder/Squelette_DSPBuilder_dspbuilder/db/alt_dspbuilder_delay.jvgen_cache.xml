@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jvgen name="alt_dspbuilder_delay" family="Cyclone" style="SUPERSET"
+    fixed-name="false" temporary="false">
+    <instance version="14.0" decorated-name="alt_dspbuilder_delay_GN6TGYZDFK">
+        <generic name="WIDTH" value="14"/>
+        <generic name="DELAY" value="1"/>
+        <generic name="CLOCKPHASE" value="1"/>
+        <generic name="USE_INIT" value="1"/>
+        <generic name="BITPATTERN" value="11111101101010"/>
+        <port name="aclr" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="clock" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="ena" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="input" dir="Input"
+            vhdl-type="std_logic_vector(14-1 downto 0)" width="14" lowerbound="0"/>
+        <port name="output" dir="Output"
+            vhdl-type="std_logic_vector(14-1 downto 0)" width="14" lowerbound="0"/>
+        <port name="sclr" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_delay_GN6TGYZDFK.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_SDelay.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_SInitDelay.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_sAltrPropagate.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_sAltrBitPropagate.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_vecseq.vhd"/>
+    </instance>
+    <instance version="14.0" decorated-name="alt_dspbuilder_delay_GNQOGXYDHZ">
+        <generic name="WIDTH" value="14"/>
+        <generic name="DELAY" value="1"/>
+        <generic name="CLOCKPHASE" value="1"/>
+        <generic name="USE_INIT" value="1"/>
+        <generic name="BITPATTERN" value="11111011010100"/>
+        <port name="aclr" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="clock" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="ena" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="input" dir="Input"
+            vhdl-type="std_logic_vector(14-1 downto 0)" width="14" lowerbound="0"/>
+        <port name="output" dir="Output"
+            vhdl-type="std_logic_vector(14-1 downto 0)" width="14" lowerbound="0"/>
+        <port name="sclr" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_delay_GNQOGXYDHZ.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_SDelay.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_SInitDelay.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_sAltrPropagate.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_sAltrBitPropagate.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_vecseq.vhd"/>
+    </instance>
+    <supersetport name="input" dir="Input"
+        vhdl-type="std_logic_vector(width-1 downto 0)" lowerbound="0"/>
+    <supersetport name="clock" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="sclr" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="aclr" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="output" dir="Output"
+        vhdl-type="std_logic_vector(width-1 downto 0)" lowerbound="0"/>
+    <supersetport name="ena" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <parameter-static name="WIDTH" default="8" type="POSITIVE"/>
+    <parameter-static name="DELAY" default="1" type="POSITIVE"/>
+    <parameter-static name="CLOCKPHASE" default="1" type="STRING"/>
+    <parameter-static name="USE_INIT" default="0" type="NATURAL"/>
+    <parameter-static name="BITPATTERN" default="00000001" type="STRING"/>
+</jvgen>

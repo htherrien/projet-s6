@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jvgen name="alt_dspbuilder_testbench_salt" family="Cyclone"
+    style="COMPLEX" fixed-name="false" temporary="false">
+    <instance version="14.0" decorated-name="alt_dspbuilder_testbench_salt_GNDBMPYDND">
+        <generic name="WIDTH" value="1"/>
+        <generic name="HDLTYPE" value="STD_LOGIC"/>
+        <port name="aclr" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="clock" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="output" dir="Output" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_testbench_salt_GNDBMPYDND.vhd"/>
+    </instance>
+    <parameter-static name="XFILE" default="default" type="STRING"/>
+    <parameter-static name="DSPBTYPE" default="" type="STRING"/>
+    <parameter-static name="WIDTH" default="8" type="INTEGER"/>
+    <parameter-static name="RESET_LATENCY" default="0" type="NATURAL"/>
+    <parameter-static name="HDLTYPE" default="STD_LOGIC_VECTOR" type="STRING"/>
+</jvgen>

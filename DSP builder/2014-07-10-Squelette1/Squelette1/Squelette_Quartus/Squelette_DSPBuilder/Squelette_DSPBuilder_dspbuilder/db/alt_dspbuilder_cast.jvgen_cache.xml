@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jvgen name="alt_dspbuilder_cast" family="Cyclone" style="COMPLEX"
+    fixed-name="false" temporary="false">
+    <instance version="14.0" decorated-name="alt_dspbuilder_cast_GN6KYL5EP5">
+        <generic name="WIDTH_INL" value="15"/>
+        <generic name="WIDTH_INR" value="0"/>
+        <generic name="WIDTH_OUTL" value="14"/>
+        <generic name="WIDTH_OUTR" value="0"/>
+        <generic name="INSIGNED" value="true"/>
+        <generic name="OUTSIGNED" value="true"/>
+        <generic name="INTYPE" value="STD_LOGIC_VECTOR"/>
+        <generic name="OUTTYPE" value="STD_LOGIC_VECTOR"/>
+        <port name="input" dir="Input"
+            vhdl-type="std_logic_vector(15-1 downto 0)" width="15" lowerbound="0"/>
+        <port name="output" dir="Output"
+            vhdl-type="std_logic_vector(14-1 downto 0)" width="14" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_cast_GN6KYL5EP5.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_SBF.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_ASAT.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_sAltrPropagate.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_AROUND.vhd"/>
+    </instance>
+    <instance version="14.0" decorated-name="alt_dspbuilder_cast_GNVFK2425V">
+        <generic name="WIDTH_INL" value="17"/>
+        <generic name="WIDTH_INR" value="16"/>
+        <generic name="WIDTH_OUTL" value="14"/>
+        <generic name="WIDTH_OUTR" value="0"/>
+        <generic name="INSIGNED" value="true"/>
+        <generic name="OUTSIGNED" value="true"/>
+        <generic name="INTYPE" value="STD_LOGIC_VECTOR"/>
+        <generic name="OUTTYPE" value="STD_LOGIC_VECTOR"/>
+        <port name="input" dir="Input"
+            vhdl-type="std_logic_vector(33-1 downto 0)" width="33" lowerbound="0"/>
+        <port name="output" dir="Output"
+            vhdl-type="std_logic_vector(14-1 downto 0)" width="14" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_cast_GNVFK2425V.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_SBF.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_ASAT.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_sAltrPropagate.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_AROUND.vhd"/>
+    </instance>
+    <parameter-static name="WIDTH_INL" default="8" type="NATURAL"/>
+    <parameter-static name="WIDTH_INR" default="0" type="NATURAL"/>
+    <parameter-static name="WIDTH_OUTL" default="8" type="NATURAL"/>
+    <parameter-static name="WIDTH_OUTR" default="0" type="NATURAL"/>
+    <parameter-static name="SATURATE" default="0" type="NATURAL"/>
+    <parameter-static name="ROUND" default="0" type="NATURAL"/>
+    <parameter-static name="INSIGNED" default="true" type="STRING"/>
+    <parameter-static name="OUTSIGNED" default="true" type="STRING"/>
+    <parameter-static name="INTYPE" default="STD_LOGIC_VECTOR" type="STRING"/>
+    <parameter-static name="OUTTYPE" default="STD_LOGIC_VECTOR" type="STRING"/>
+</jvgen>

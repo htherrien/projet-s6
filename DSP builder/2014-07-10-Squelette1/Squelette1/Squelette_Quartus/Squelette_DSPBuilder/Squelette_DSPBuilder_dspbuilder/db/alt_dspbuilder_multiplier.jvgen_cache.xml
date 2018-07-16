@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jvgen name="alt_dspbuilder_multiplier" family="Cyclone"
+    style="SUPERSET" fixed-name="false" temporary="false">
+    <instance version="14.0" decorated-name="alt_dspbuilder_multiplier_GNVM2FSDDK">
+        <generic name="DEDICATED_MULTIPLIER_CIRCUITRY" value="YES"/>
+        <generic name="PIPELINE" value="0"/>
+        <generic name="OUTPUTMSB" value="32"/>
+        <generic name="OUTPUTLSB" value="0"/>
+        <generic name="SIGNED" value="1"/>
+        <generic name="AWIDTH" value="14"/>
+        <generic name="BWIDTH" value="19"/>
+        <port name="aclr" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="clock" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="dataa" dir="Input"
+            vhdl-type="std_logic_vector(14-1 downto 0)" width="14" lowerbound="0"/>
+        <port name="datab" dir="Input"
+            vhdl-type="std_logic_vector(19-1 downto 0)" width="19" lowerbound="0"/>
+        <port name="ena" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="result" dir="Output"
+            vhdl-type="std_logic_vector(33-1 downto 0)" width="33" lowerbound="0"/>
+        <port name="user_aclr" dir="Input" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_multiplier_GNVM2FSDDK.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_sMultAltr.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_AltMultConst.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_MultAdd.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_MultAddMF.vhd"/>
+    </instance>
+    <supersetport name="user_aclr" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="result" dir="Output"
+        vhdl-type="std_logic_vector(OutputMsb-OutputLsb+1-1 downto 0)" lowerbound="0"/>
+    <supersetport name="clock" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="dataa" dir="Input"
+        vhdl-type="std_logic_vector(aWidth-1 downto 0)" lowerbound="0"/>
+    <supersetport name="datab" dir="Input"
+        vhdl-type="std_logic_vector(bWidth-1 downto 0)" lowerbound="0"/>
+    <supersetport name="aclr" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="ena" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <parameter-static name="DEDICATED_MULTIPLIER_CIRCUITRY"
+        default="AUTO" type="STRING"/>
+    <parameter-static name="PIPELINE" default="0" type="INTEGER"/>
+    <parameter-static name="OUTPUTMSB" default="8" type="INTEGER"/>
+    <parameter-static name="OUTPUTLSB" default="0" type="INTEGER"/>
+    <parameter-static name="SIGNED" default="0" type="NATURAL"/>
+    <parameter-static name="AWIDTH" default="8" type="NATURAL"/>
+    <parameter-static name="BWIDTH" default="8" type="NATURAL"/>
+</jvgen>

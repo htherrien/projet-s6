@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jvgen name="alt_dspbuilder_parallel_adder" family="Cyclone"
+    style="COMPLEX" fixed-name="false" temporary="false">
+    <instance version="14.0" decorated-name="alt_dspbuilder_parallel_adder_GNGXGUGRPY">
+        <generic name="PIPELINE" value="0"/>
+        <generic name="MASKVALUE" value="1"/>
+        <generic name="DIRECTION" value="-+"/>
+        <generic name="DATAWIDTH" value="14"/>
+        <generic name="NUMBER_INPUTS" value="2"/>
+        <port name="aclr" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="clock" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="data0" dir="Input"
+            vhdl-type="std_logic_vector(14-1 downto 0)" width="14" lowerbound="0"/>
+        <port name="data1" dir="Input"
+            vhdl-type="std_logic_vector(14-1 downto 0)" width="14" lowerbound="0"/>
+        <port name="ena" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="result" dir="Output"
+            vhdl-type="std_logic_vector(15-1 downto 0)" width="15" lowerbound="0"/>
+        <port name="user_aclr" dir="Input" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_parallel_adder_GNGXGUGRPY.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_SAdderSub.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_sAltrBitPropagate.vhd"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_vecseq.vhd"/>
+    </instance>
+    <parameter-static name="PIPELINE" default="0" type="NATURAL"/>
+    <parameter-static name="MASKVALUE" default="1" type="STRING"/>
+    <parameter-static name="DIRECTION" default="+" type="STRING"/>
+    <parameter-static name="DATAWIDTH" default="8" type="POSITIVE"/>
+    <parameter-static name="NUMBER_INPUTS" default="2" type="POSITIVE"/>
+</jvgen>

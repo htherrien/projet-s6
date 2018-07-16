@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jvgen name="alt_dspbuilder_testbench_capture" family="Cyclone"
+    style="COMPLEX" fixed-name="false" temporary="false">
+    <instance version="14.0" decorated-name="alt_dspbuilder_testbench_capture_GNQX2JTRTZ">
+        <generic name="WIDTH" value="1"/>
+        <generic name="RESET_LATENCY" value="0"/>
+        <generic name="HDLTYPE" value="STD_LOGIC"/>
+        <port name="aclr" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="clock" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="input" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_testbench_capture_GNQX2JTRTZ.vhd"/>
+    </instance>
+    <instance version="14.0" decorated-name="alt_dspbuilder_testbench_capture_GNXQSSLPCC">
+        <generic name="WIDTH" value="14"/>
+        <generic name="RESET_LATENCY" value="0"/>
+        <generic name="HDLTYPE" value="STD_LOGIC_VECTOR"/>
+        <port name="aclr" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="clock" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="input" dir="Input"
+            vhdl-type="std_logic_vector(14-1 downto 0)" width="14" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_testbench_capture_GNXQSSLPCC.vhd"/>
+    </instance>
+    <parameter-static name="XFILE" default="default" type="STRING"/>
+    <parameter-static name="DSPBTYPE" default="" type="STRING"/>
+    <parameter-static name="WIDTH" default="8" type="INTEGER"/>
+    <parameter-static name="RESET_LATENCY" default="0" type="NATURAL"/>
+    <parameter-static name="HDLTYPE" default="STD_LOGIC_VECTOR" type="STRING"/>
+</jvgen>

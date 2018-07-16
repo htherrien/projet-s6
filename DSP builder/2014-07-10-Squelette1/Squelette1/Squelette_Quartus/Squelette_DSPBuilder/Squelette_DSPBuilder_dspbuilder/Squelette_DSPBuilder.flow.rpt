@@ -1,0 +1,123 @@
+Flow report for Squelette_DSPBuilder
+Thu Jul 10 07:31:32 2014
+Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Flow Summary                                                                  ;
++---------------------------------+---------------------------------------------+
+; Flow Status                     ; Successful - Thu Jul 10 07:31:32 2014       ;
+; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Full Version ;
+; Revision Name                   ; Squelette_DSPBuilder                        ;
+; Top-level Entity Name           ; Squelette_DSPBuilder                        ;
+; Family                          ; Cyclone V                                   ;
+; Device                          ; 5CGXFC7C7F23C8                              ;
+; Timing Models                   ; Final                                       ;
+; Logic utilization (in ALMs)     ; 19 / 56,480 ( < 1 % )                       ;
+; Total registers                 ; 28                                          ;
+; Total pins                      ; 27 / 268 ( 10 % )                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0 / 7,024,640 ( 0 % )                       ;
+; Total DSP Blocks                ; 1 / 156 ( < 1 % )                           ;
+; Total HSSI RX PCSs              ; 0 / 6 ( 0 % )                               ;
+; Total HSSI PMA RX Deserializers ; 0 / 6 ( 0 % )                               ;
+; Total HSSI TX PCSs              ; 0 / 6 ( 0 % )                               ;
+; Total HSSI PMA TX Serializers   ; 0 / 6 ( 0 % )                               ;
+; Total PLLs                      ; 0 / 13 ( 0 % )                              ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                               ;
++---------------------------------+---------------------------------------------+
+
+
++------------------------------------------+
+; Flow Settings                            ;
++-------------------+----------------------+
+; Option            ; Setting              ;
++-------------------+----------------------+
+; Start date & time ; 07/10/2014 07:25:58  ;
+; Main task         ; Compilation          ;
+; Revision Name     ; Squelette_DSPBuilder ;
++-------------------+----------------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                          ;
++-----------------------+----------------------------------------+---------------+-------------+------------+
+; Assignment Name       ; Value                                  ; Default Value ; Entity Name ; Section Id ;
++-----------------------+----------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID ; 191846016665694.140499155708652        ; --            ; --          ; --         ;
+; ENABLE_SIGNALTAP      ; Off                                    ; --            ; --          ; --         ;
+; SEARCH_PATH           ; ../.                                   ; --            ; --          ; --         ;
+; SEARCH_PATH           ; ../Squelette_DSPBuilder_dspbuilder/hdl ; --            ; --          ; --         ;
++-----------------------+----------------------------------------+---------------+-------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:16     ; 1.0                     ; 641 MB              ; 00:00:12                           ;
+; Fitter                    ; 00:03:16     ; 1.3                     ; 1883 MB             ; 00:04:10                           ;
+; TimeQuest Timing Analyzer ; 00:00:39     ; 1.0                     ; 941 MB              ; 00:00:35                           ;
+; Assembler                 ; 00:01:02     ; 1.0                     ; 696 MB              ; 00:00:59                           ;
+; Total                     ; 00:05:13     ; --                      ; --                  ; 00:05:56                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; 3IT-E5440-01     ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; 3IT-E5440-01     ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; 3IT-E5440-01     ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; 3IT-E5440-01     ; Windows 7 ; 6.1        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map Squelette_DSPBuilder
+quartus_fit Squelette_DSPBuilder
+quartus_sta Squelette_DSPBuilder
+quartus_asm Squelette_DSPBuilder
+
+
+

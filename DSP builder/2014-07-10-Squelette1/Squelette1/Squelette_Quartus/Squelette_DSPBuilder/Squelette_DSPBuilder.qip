@@ -1,0 +1,6 @@
+
+#QIP file for DSP Builder system Squelette_DSPBuilder
+set_global_assignment -name SEARCH_PATH [file join $::quartus(qip_path) "." ]
+set_global_assignment -name SEARCH_PATH [file join $::quartus(qip_path) "Squelette_DSPBuilder_dspbuilder/hdl" ]
+
+set_global_assignment -name "QIP_FILE" [file join $::quartus(qip_path) "Squelette_DSPBuilder_dspbuilder/hdl/Squelette_DSPBuilder.qip" ]

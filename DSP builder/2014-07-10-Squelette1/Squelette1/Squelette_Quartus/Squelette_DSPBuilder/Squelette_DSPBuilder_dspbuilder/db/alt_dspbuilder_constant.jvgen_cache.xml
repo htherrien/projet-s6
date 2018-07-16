@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jvgen name="alt_dspbuilder_constant" family="Cyclone" style="COMPLEX"
+    fixed-name="false" temporary="false">
+    <instance version="14.0" decorated-name="alt_dspbuilder_constant_GNR47HMCFS">
+        <generic name="HDLTYPE" value="STD_LOGIC_VECTOR"/>
+        <generic name="WIDTH" value="19"/>
+        <generic name="BITPATTERN" value="0011110011000001111"/>
+        <port name="output" dir="Output"
+            vhdl-type="std_logic_vector(19-1 downto 0)" width="19" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_constant_GNR47HMCFS.vhd"/>
+    </instance>
+    <parameter-static name="HDLTYPE" default="STD_LOGIC_VECTOR" type="STRING"/>
+    <parameter-static name="WIDTH" default="4" type="NATURAL"/>
+    <parameter-static name="BITPATTERN" default="0000" type="STRING"/>
+</jvgen>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jvgen name="alt_dspbuilder_testbench_clock" family="Cyclone"
+    style="SUPERSET" fixed-name="false" temporary="false">
+    <instance version="14.0" decorated-name="alt_dspbuilder_testbench_clock_GNCGUFKHRR">
+        <generic name="PHASE_DELAY" value="0 fs"/>
+        <generic name="PERIOD" value="20 ns"/>
+        <port name="aclr_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="clock_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="reg_aclr_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="tb_aclr" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_testbench_clock_GNCGUFKHRR.vhd"/>
+    </instance>
+    <instance version="14.0" decorated-name="alt_dspbuilder_testbench_clock_GNSAS6FNZP">
+        <generic name="PHASE_DELAY" value="0 fs"/>
+        <generic name="PERIOD" value="16 ns"/>
+        <port name="aclr_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="clock_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="reg_aclr_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="tb_aclr" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_testbench_clock_GNSAS6FNZP.vhd"/>
+    </instance>
+    <instance version="14.0" decorated-name="alt_dspbuilder_testbench_clock_GNB4F5J4FW">
+        <generic name="PHASE_DELAY" value="0 fs"/>
+        <generic name="PERIOD" value="500 ns"/>
+        <port name="aclr_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="clock_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="reg_aclr_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="tb_aclr" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_testbench_clock_GNB4F5J4FW.vhd"/>
+    </instance>
+    <instance version="14.0" decorated-name="alt_dspbuilder_testbench_clock_GN3JWMVXTD">
+        <generic name="PHASE_DELAY" value="0 fs"/>
+        <generic name="PERIOD" value="8 ns"/>
+        <port name="aclr_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="clock_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="reg_aclr_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="tb_aclr" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_testbench_clock_GN3JWMVXTD.vhd"/>
+    </instance>
+    <supersetport name="clock_out" dir="Output" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="aclr_out" dir="Output" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="tb_aclr" dir="Output" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="reg_aclr_out" dir="Output" vhdl-type="std_logic" lowerbound="0"/>
+    <parameter-static name="INITIAL_CLOCK" default="1" type="NATURAL"/>
+    <parameter-static name="RESET_LATENCY" default="0" type="NATURAL"/>
+    <parameter-static name="RESET_REGISTER_CASCADE_DEPTH" default="0" type="NATURAL"/>
+    <parameter-static name="SIMULATION_START_CYCLE" default="4" type="NATURAL"/>
+    <parameter-static name="PHASE_DELAY" default="0 ns" type="STRING"/>
+    <parameter-static name="PERIOD" default="20 ns" type="STRING"/>
+</jvgen>

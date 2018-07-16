@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="Squelette_DSPBuilder">
+		<CBX_INST_ENTRY INSTANCE_NAME="|Squelette_DSPBuilder|Squelette_DSPBuilder_GN:\Squelette_DSPBuilder_GN_0:inst_Squelette_DSPBuilder_GN_0|alt_dspbuilder_multiplier_GNVM2FSDDK:multiplier|alt_dspbuilder_sMultAltr:Multiplieri|LPM_MULT:\gcomb:U0" CBX_FILE_NAME="mult_3kr.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Squelette_DSPBuilder|Squelette_DSPBuilder_GN:\Squelette_DSPBuilder_GN_0:inst_Squelette_DSPBuilder_GN_0|alt_dspbuilder_parallel_adder_GNGXGUGRPY:parallel_adder_subtractor|alt_dspbuilder_SAdderSub:adder_1_1|LPM_ADD_SUB:\nopip:gensa:U0" CBX_FILE_NAME="add_sub_k6g.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

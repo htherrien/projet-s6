@@ -1,0 +1,1077 @@
+TimeQuest Timing Analyzer report for Squelette_DSPBuilder
+Thu Jul 10 07:30:24 2014
+Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. SDC File List
+  5. Clocks
+  6. Slow 1100mV 85C Model Fmax Summary
+  7. Timing Closure Recommendations
+  8. Slow 1100mV 85C Model Setup Summary
+  9. Slow 1100mV 85C Model Hold Summary
+ 10. Slow 1100mV 85C Model Recovery Summary
+ 11. Slow 1100mV 85C Model Removal Summary
+ 12. Slow 1100mV 85C Model Minimum Pulse Width Summary
+ 13. Setup Times
+ 14. Hold Times
+ 15. Clock to Output Times
+ 16. Minimum Clock to Output Times
+ 17. Propagation Delay
+ 18. Minimum Propagation Delay
+ 19. Slow 1100mV 85C Model Metastability Report
+ 20. Slow 1100mV 0C Model Fmax Summary
+ 21. Slow 1100mV 0C Model Setup Summary
+ 22. Slow 1100mV 0C Model Hold Summary
+ 23. Slow 1100mV 0C Model Recovery Summary
+ 24. Slow 1100mV 0C Model Removal Summary
+ 25. Slow 1100mV 0C Model Minimum Pulse Width Summary
+ 26. Setup Times
+ 27. Hold Times
+ 28. Clock to Output Times
+ 29. Minimum Clock to Output Times
+ 30. Propagation Delay
+ 31. Minimum Propagation Delay
+ 32. Slow 1100mV 0C Model Metastability Report
+ 33. Fast 1100mV 85C Model Setup Summary
+ 34. Fast 1100mV 85C Model Hold Summary
+ 35. Fast 1100mV 85C Model Recovery Summary
+ 36. Fast 1100mV 85C Model Removal Summary
+ 37. Fast 1100mV 85C Model Minimum Pulse Width Summary
+ 38. Setup Times
+ 39. Hold Times
+ 40. Clock to Output Times
+ 41. Minimum Clock to Output Times
+ 42. Propagation Delay
+ 43. Minimum Propagation Delay
+ 44. Fast 1100mV 85C Model Metastability Report
+ 45. Fast 1100mV 0C Model Setup Summary
+ 46. Fast 1100mV 0C Model Hold Summary
+ 47. Fast 1100mV 0C Model Recovery Summary
+ 48. Fast 1100mV 0C Model Removal Summary
+ 49. Fast 1100mV 0C Model Minimum Pulse Width Summary
+ 50. Setup Times
+ 51. Hold Times
+ 52. Clock to Output Times
+ 53. Minimum Clock to Output Times
+ 54. Propagation Delay
+ 55. Minimum Propagation Delay
+ 56. Fast 1100mV 0C Model Metastability Report
+ 57. Multicorner Timing Analysis Summary
+ 58. Setup Times
+ 59. Hold Times
+ 60. Clock to Output Times
+ 61. Minimum Clock to Output Times
+ 62. Propagation Delay
+ 63. Minimum Propagation Delay
+ 64. Board Trace Model Assignments
+ 65. Input Transition Times
+ 66. Signal Integrity Metrics (Slow 1100mv 0c Model)
+ 67. Signal Integrity Metrics (Slow 1100mv 85c Model)
+ 68. Signal Integrity Metrics (Fast 1100mv 0c Model)
+ 69. Signal Integrity Metrics (Fast 1100mv 85c Model)
+ 70. Setup Transfers
+ 71. Hold Transfers
+ 72. Report TCCS
+ 73. Report RSKM
+ 74. Unconstrained Paths
+ 75. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++--------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                        ;
++--------------------+-----------------------------------------------------+
+; Quartus II Version ; Version 14.0.0 Build 200 06/17/2014 SJ Full Version ;
+; Revision Name      ; Squelette_DSPBuilder                                ;
+; Device Family      ; Cyclone V                                           ;
+; Device Name        ; 5CGXFC7C7F23C8                                      ;
+; Timing Models      ; Final                                               ;
+; Delay Model        ; Combined                                            ;
+; Rise/Fall Delays   ; Enabled                                             ;
++--------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.03        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   3.3%      ;
+;     Processors 3-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------+
+; SDC File List                                                ;
++--------------------------+--------+--------------------------+
+; SDC File Path            ; Status ; Read at                  ;
++--------------------------+--------+--------------------------+
+; Squelette_DSPBuilder.sdc ; OK     ; Thu Jul 10 07:30:01 2014 ;
++--------------------------+--------+--------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                         ;
++---------------+------+---------+-----------+-------+---------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------+
+; Clock Name    ; Type ; Period  ; Frequency ; Rise  ; Fall    ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets           ;
++---------------+------+---------+-----------+-------+---------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------+
+; Clock_2MHz    ; Base ; 500.000 ; 2.0 MHz   ; 0.000 ; 250.000 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { Clock_2MHz }    ;
+; Clock_50MHz   ; Base ; 20.000  ; 50.0 MHz  ; 0.000 ; 10.000  ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { Clock_50MHz }   ;
+; Clock_62p5MHz ; Base ; 16.000  ; 62.5 MHz  ; 0.000 ; 8.000   ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { Clock_62p5MHz } ;
+; Clock_125MHz  ; Base ; 8.000   ; 125.0 MHz ; 0.000 ; 4.000   ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { Clock_125MHz }  ;
++---------------+------+---------+-----------+-------+---------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------+
+
+
++----------------------------------------------------+
+; Slow 1100mV 85C Model Fmax Summary                 ;
++------------+-----------------+--------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name   ; Note ;
++------------+-----------------+--------------+------+
+; 115.75 MHz ; 115.75 MHz      ; Clock_125MHz ;      ;
++------------+-----------------+--------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
+----------------------------------
+; Timing Closure Recommendations ;
+----------------------------------
+HTML report is unavailable in plain text report export.
+
+
++---------------------------------------+
+; Slow 1100mV 85C Model Setup Summary   ;
++--------------+--------+---------------+
+; Clock        ; Slack  ; End Point TNS ;
++--------------+--------+---------------+
+; Clock_125MHz ; -0.639 ; -2.628        ;
++--------------+--------+---------------+
+
+
++--------------------------------------+
+; Slow 1100mV 85C Model Hold Summary   ;
++--------------+-------+---------------+
+; Clock        ; Slack ; End Point TNS ;
++--------------+-------+---------------+
+; Clock_125MHz ; 0.610 ; 0.000         ;
++--------------+-------+---------------+
+
+
+------------------------------------------
+; Slow 1100mV 85C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Slow 1100mV 85C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Slow 1100mV 85C Model Minimum Pulse Width Summary ;
++--------------+-------+----------------------------+
+; Clock        ; Slack ; End Point TNS              ;
++--------------+-------+----------------------------+
+; Clock_125MHz ; 3.241 ; 0.000                      ;
++--------------+-------+----------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Setup Times                                                                                ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; Data Port                    ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; modulateur_bit_a_transmettre ; Clock_125MHz ; 1.196 ; 1.408 ; Rise       ; Clock_125MHz    ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Hold Times                                                                                 ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; Data Port                    ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; modulateur_bit_a_transmettre ; Clock_125MHz ; 0.760 ; 0.629 ; Rise       ; Clock_125MHz    ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------+
+; Clock to Output Times                                                            ;
++------------------+--------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port   ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+--------------+--------+--------+------------+-----------------+
+; Output_DAC0[*]   ; Clock_125MHz ; 18.828 ; 19.156 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[0]  ; Clock_125MHz ; 17.685 ; 18.008 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[1]  ; Clock_125MHz ; 18.293 ; 18.493 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[2]  ; Clock_125MHz ; 18.608 ; 18.925 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[3]  ; Clock_125MHz ; 16.258 ; 16.490 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[4]  ; Clock_125MHz ; 18.192 ; 18.190 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[5]  ; Clock_125MHz ; 16.086 ; 16.267 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[6]  ; Clock_125MHz ; 18.672 ; 18.912 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[7]  ; Clock_125MHz ; 18.239 ; 18.480 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[8]  ; Clock_125MHz ; 18.575 ; 18.802 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[9]  ; Clock_125MHz ; 18.828 ; 19.156 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[10] ; Clock_125MHz ; 18.525 ; 18.740 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[11] ; Clock_125MHz ; 18.396 ; 18.593 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[12] ; Clock_125MHz ; 18.753 ; 18.978 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[13] ; Clock_125MHz ; 18.468 ; 18.639 ; Rise       ; Clock_125MHz    ;
++------------------+--------------+--------+--------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                    ;
++------------------+--------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port   ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+--------------+--------+--------+------------+-----------------+
+; Output_DAC0[*]   ; Clock_125MHz ; 9.653  ; 9.734  ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[0]  ; Clock_125MHz ; 9.929  ; 10.077 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[1]  ; Clock_125MHz ; 10.341 ; 10.455 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[2]  ; Clock_125MHz ; 10.173 ; 10.482 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[3]  ; Clock_125MHz ; 9.720  ; 10.034 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[4]  ; Clock_125MHz ; 9.968  ; 9.914  ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[5]  ; Clock_125MHz ; 9.653  ; 9.734  ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[6]  ; Clock_125MHz ; 10.291 ; 10.536 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[7]  ; Clock_125MHz ; 9.876  ; 10.136 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[8]  ; Clock_125MHz ; 10.138 ; 10.379 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[9]  ; Clock_125MHz ; 10.671 ; 10.841 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[10] ; Clock_125MHz ; 10.096 ; 10.341 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[11] ; Clock_125MHz ; 10.233 ; 10.427 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[12] ; Clock_125MHz ; 10.459 ; 10.571 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[13] ; Clock_125MHz ; 10.203 ; 10.300 ; Rise       ; Clock_125MHz    ;
++------------------+--------------+--------+--------+------------+-----------------+
+
+
++----------------------------------------------------------------------+
+; Propagation Delay                                                    ;
++------------------------------+-------------+-------+----+----+-------+
+; Input Port                   ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------------------------+-------------+-------+----+----+-------+
+; modulateur_bit_a_transmettre ; Output_test ; 9.670 ;    ;    ; 9.894 ;
++------------------------------+-------------+-------+----+----+-------+
+
+
++----------------------------------------------------------------------+
+; Minimum Propagation Delay                                            ;
++------------------------------+-------------+-------+----+----+-------+
+; Input Port                   ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------------------------+-------------+-------+----+----+-------+
+; modulateur_bit_a_transmettre ; Output_test ; 7.527 ;    ;    ; 7.702 ;
++------------------------------+-------------+-------+----+----+-------+
+
+
+----------------------------------------------
+; Slow 1100mV 85C Model Metastability Report ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++----------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary                  ;
++------------+-----------------+--------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name   ; Note ;
++------------+-----------------+--------------+------+
+; 112.15 MHz ; 112.15 MHz      ; Clock_125MHz ;      ;
++------------+-----------------+--------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++---------------------------------------+
+; Slow 1100mV 0C Model Setup Summary    ;
++--------------+--------+---------------+
+; Clock        ; Slack  ; End Point TNS ;
++--------------+--------+---------------+
+; Clock_125MHz ; -0.917 ; -4.669        ;
++--------------+--------+---------------+
+
+
++--------------------------------------+
+; Slow 1100mV 0C Model Hold Summary    ;
++--------------+-------+---------------+
+; Clock        ; Slack ; End Point TNS ;
++--------------+-------+---------------+
+; Clock_125MHz ; 0.604 ; 0.000         ;
++--------------+-------+---------------+
+
+
+-----------------------------------------
+; Slow 1100mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Slow 1100mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Slow 1100mV 0C Model Minimum Pulse Width Summary ;
++--------------+-------+---------------------------+
+; Clock        ; Slack ; End Point TNS             ;
++--------------+-------+---------------------------+
+; Clock_125MHz ; 3.111 ; 0.000                     ;
++--------------+-------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Setup Times                                                                                ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; Data Port                    ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; modulateur_bit_a_transmettre ; Clock_125MHz ; 1.018 ; 1.297 ; Rise       ; Clock_125MHz    ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Hold Times                                                                                 ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; Data Port                    ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; modulateur_bit_a_transmettre ; Clock_125MHz ; 0.868 ; 0.712 ; Rise       ; Clock_125MHz    ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------+
+; Clock to Output Times                                                            ;
++------------------+--------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port   ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+--------------+--------+--------+------------+-----------------+
+; Output_DAC0[*]   ; Clock_125MHz ; 18.944 ; 19.265 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[0]  ; Clock_125MHz ; 17.796 ; 18.098 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[1]  ; Clock_125MHz ; 18.441 ; 18.628 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[2]  ; Clock_125MHz ; 18.768 ; 19.076 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[3]  ; Clock_125MHz ; 16.370 ; 16.575 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[4]  ; Clock_125MHz ; 18.372 ; 18.389 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[5]  ; Clock_125MHz ; 16.228 ; 16.387 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[6]  ; Clock_125MHz ; 18.836 ; 19.080 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[7]  ; Clock_125MHz ; 18.365 ; 18.588 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[8]  ; Clock_125MHz ; 18.765 ; 18.979 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[9]  ; Clock_125MHz ; 18.914 ; 19.265 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[10] ; Clock_125MHz ; 18.707 ; 18.924 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[11] ; Clock_125MHz ; 18.547 ; 18.719 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[12] ; Clock_125MHz ; 18.944 ; 19.164 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[13] ; Clock_125MHz ; 18.487 ; 18.644 ; Rise       ; Clock_125MHz    ;
++------------------+--------------+--------+--------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                    ;
++------------------+--------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port   ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+--------------+--------+--------+------------+-----------------+
+; Output_DAC0[*]   ; Clock_125MHz ; 9.629  ; 9.735  ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[0]  ; Clock_125MHz ; 9.903  ; 10.033 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[1]  ; Clock_125MHz ; 10.318 ; 10.428 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[2]  ; Clock_125MHz ; 10.082 ; 10.419 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[3]  ; Clock_125MHz ; 9.629  ; 9.926  ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[4]  ; Clock_125MHz ; 9.931  ; 9.895  ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[5]  ; Clock_125MHz ; 9.678  ; 9.735  ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[6]  ; Clock_125MHz ; 10.197 ; 10.451 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[7]  ; Clock_125MHz ; 9.818  ; 10.089 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[8]  ; Clock_125MHz ; 9.996  ; 10.256 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[9]  ; Clock_125MHz ; 10.617 ; 10.817 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[10] ; Clock_125MHz ; 10.018 ; 10.283 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[11] ; Clock_125MHz ; 10.163 ; 10.359 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[12] ; Clock_125MHz ; 10.412 ; 10.527 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[13] ; Clock_125MHz ; 10.165 ; 10.251 ; Rise       ; Clock_125MHz    ;
++------------------+--------------+--------+--------+------------+-----------------+
+
+
++----------------------------------------------------------------------+
+; Propagation Delay                                                    ;
++------------------------------+-------------+-------+----+----+-------+
+; Input Port                   ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------------------------+-------------+-------+----+----+-------+
+; modulateur_bit_a_transmettre ; Output_test ; 9.560 ;    ;    ; 9.789 ;
++------------------------------+-------------+-------+----+----+-------+
+
+
++----------------------------------------------------------------------+
+; Minimum Propagation Delay                                            ;
++------------------------------+-------------+-------+----+----+-------+
+; Input Port                   ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------------------------+-------------+-------+----+----+-------+
+; modulateur_bit_a_transmettre ; Output_test ; 7.413 ;    ;    ; 7.601 ;
++------------------------------+-------------+-------+----+----+-------+
+
+
+---------------------------------------------
+; Slow 1100mV 0C Model Metastability Report ;
+---------------------------------------------
+No synchronizer chains to report.
+
+
++--------------------------------------+
+; Fast 1100mV 85C Model Setup Summary  ;
++--------------+-------+---------------+
+; Clock        ; Slack ; End Point TNS ;
++--------------+-------+---------------+
+; Clock_125MHz ; 4.493 ; 0.000         ;
++--------------+-------+---------------+
+
+
++--------------------------------------+
+; Fast 1100mV 85C Model Hold Summary   ;
++--------------+-------+---------------+
+; Clock        ; Slack ; End Point TNS ;
++--------------+-------+---------------+
+; Clock_125MHz ; 0.250 ; 0.000         ;
++--------------+-------+---------------+
+
+
+------------------------------------------
+; Fast 1100mV 85C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Fast 1100mV 85C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Fast 1100mV 85C Model Minimum Pulse Width Summary ;
++--------------+-------+----------------------------+
+; Clock        ; Slack ; End Point TNS              ;
++--------------+-------+----------------------------+
+; Clock_125MHz ; 3.414 ; 0.000                      ;
++--------------+-------+----------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Setup Times                                                                                ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; Data Port                    ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; modulateur_bit_a_transmettre ; Clock_125MHz ; 0.413 ; 1.046 ; Rise       ; Clock_125MHz    ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Hold Times                                                                                  ;
++------------------------------+--------------+-------+--------+------------+-----------------+
+; Data Port                    ; Clock Port   ; Rise  ; Fall   ; Clock Edge ; Clock Reference ;
++------------------------------+--------------+-------+--------+------------+-----------------+
+; modulateur_bit_a_transmettre ; Clock_125MHz ; 0.298 ; -0.229 ; Rise       ; Clock_125MHz    ;
++------------------------------+--------------+-------+--------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Clock to Output Times                                                          ;
++------------------+--------------+-------+-------+------------+-----------------+
+; Data Port        ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------+--------------+-------+-------+------------+-----------------+
+; Output_DAC0[*]   ; Clock_125MHz ; 8.178 ; 8.545 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[0]  ; Clock_125MHz ; 7.583 ; 7.892 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[1]  ; Clock_125MHz ; 7.747 ; 8.025 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[2]  ; Clock_125MHz ; 7.944 ; 8.274 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[3]  ; Clock_125MHz ; 7.148 ; 7.403 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[4]  ; Clock_125MHz ; 7.737 ; 7.860 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[5]  ; Clock_125MHz ; 7.053 ; 7.253 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[6]  ; Clock_125MHz ; 7.946 ; 8.233 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[7]  ; Clock_125MHz ; 7.918 ; 8.181 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[8]  ; Clock_125MHz ; 7.925 ; 8.185 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[9]  ; Clock_125MHz ; 8.178 ; 8.545 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[10] ; Clock_125MHz ; 7.896 ; 8.144 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[11] ; Clock_125MHz ; 7.933 ; 8.172 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[12] ; Clock_125MHz ; 7.999 ; 8.279 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[13] ; Clock_125MHz ; 7.986 ; 8.238 ; Rise       ; Clock_125MHz    ;
++------------------+--------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                  ;
++------------------+--------------+-------+-------+------------+-----------------+
+; Data Port        ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------+--------------+-------+-------+------------+-----------------+
+; Output_DAC0[*]   ; Clock_125MHz ; 4.452 ; 4.622 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[0]  ; Clock_125MHz ; 4.570 ; 4.808 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[1]  ; Clock_125MHz ; 4.691 ; 4.927 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[2]  ; Clock_125MHz ; 4.701 ; 4.999 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[3]  ; Clock_125MHz ; 4.536 ; 4.802 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[4]  ; Clock_125MHz ; 4.564 ; 4.662 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[5]  ; Clock_125MHz ; 4.452 ; 4.622 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[6]  ; Clock_125MHz ; 4.721 ; 4.981 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[7]  ; Clock_125MHz ; 4.586 ; 4.826 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[8]  ; Clock_125MHz ; 4.690 ; 4.951 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[9]  ; Clock_125MHz ; 4.890 ; 5.181 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[10] ; Clock_125MHz ; 4.686 ; 4.917 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[11] ; Clock_125MHz ; 4.689 ; 4.913 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[12] ; Clock_125MHz ; 4.791 ; 5.019 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[13] ; Clock_125MHz ; 4.683 ; 4.896 ; Rise       ; Clock_125MHz    ;
++------------------+--------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------+
+; Propagation Delay                                                    ;
++------------------------------+-------------+-------+----+----+-------+
+; Input Port                   ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------------------------+-------------+-------+----+----+-------+
+; modulateur_bit_a_transmettre ; Output_test ; 4.329 ;    ;    ; 4.943 ;
++------------------------------+-------------+-------+----+----+-------+
+
+
++----------------------------------------------------------------------+
+; Minimum Propagation Delay                                            ;
++------------------------------+-------------+-------+----+----+-------+
+; Input Port                   ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------------------------+-------------+-------+----+----+-------+
+; modulateur_bit_a_transmettre ; Output_test ; 3.522 ;    ;    ; 4.107 ;
++------------------------------+-------------+-------+----+----+-------+
+
+
+----------------------------------------------
+; Fast 1100mV 85C Model Metastability Report ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++--------------------------------------+
+; Fast 1100mV 0C Model Setup Summary   ;
++--------------+-------+---------------+
+; Clock        ; Slack ; End Point TNS ;
++--------------+-------+---------------+
+; Clock_125MHz ; 4.695 ; 0.000         ;
++--------------+-------+---------------+
+
+
++--------------------------------------+
+; Fast 1100mV 0C Model Hold Summary    ;
++--------------+-------+---------------+
+; Clock        ; Slack ; End Point TNS ;
++--------------+-------+---------------+
+; Clock_125MHz ; 0.238 ; 0.000         ;
++--------------+-------+---------------+
+
+
+-----------------------------------------
+; Fast 1100mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Fast 1100mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Fast 1100mV 0C Model Minimum Pulse Width Summary ;
++--------------+-------+---------------------------+
+; Clock        ; Slack ; End Point TNS             ;
++--------------+-------+---------------------------+
+; Clock_125MHz ; 3.413 ; 0.000                     ;
++--------------+-------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Setup Times                                                                                ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; Data Port                    ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; modulateur_bit_a_transmettre ; Clock_125MHz ; 0.364 ; 0.961 ; Rise       ; Clock_125MHz    ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Hold Times                                                                                  ;
++------------------------------+--------------+-------+--------+------------+-----------------+
+; Data Port                    ; Clock Port   ; Rise  ; Fall   ; Clock Edge ; Clock Reference ;
++------------------------------+--------------+-------+--------+------------+-----------------+
+; modulateur_bit_a_transmettre ; Clock_125MHz ; 0.298 ; -0.216 ; Rise       ; Clock_125MHz    ;
++------------------------------+--------------+-------+--------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Clock to Output Times                                                          ;
++------------------+--------------+-------+-------+------------+-----------------+
+; Data Port        ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------+--------------+-------+-------+------------+-----------------+
+; Output_DAC0[*]   ; Clock_125MHz ; 7.749 ; 8.015 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[0]  ; Clock_125MHz ; 7.163 ; 7.417 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[1]  ; Clock_125MHz ; 7.318 ; 7.547 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[2]  ; Clock_125MHz ; 7.528 ; 7.770 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[3]  ; Clock_125MHz ; 6.752 ; 6.931 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[4]  ; Clock_125MHz ; 7.306 ; 7.402 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[5]  ; Clock_125MHz ; 6.645 ; 6.794 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[6]  ; Clock_125MHz ; 7.547 ; 7.751 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[7]  ; Clock_125MHz ; 7.500 ; 7.697 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[8]  ; Clock_125MHz ; 7.535 ; 7.721 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[9]  ; Clock_125MHz ; 7.749 ; 8.015 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[10] ; Clock_125MHz ; 7.487 ; 7.677 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[11] ; Clock_125MHz ; 7.555 ; 7.721 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[12] ; Clock_125MHz ; 7.575 ; 7.800 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[13] ; Clock_125MHz ; 7.522 ; 7.725 ; Rise       ; Clock_125MHz    ;
++------------------+--------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                  ;
++------------------+--------------+-------+-------+------------+-----------------+
+; Data Port        ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------+--------------+-------+-------+------------+-----------------+
+; Output_DAC0[*]   ; Clock_125MHz ; 4.200 ; 4.321 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[0]  ; Clock_125MHz ; 4.307 ; 4.498 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[1]  ; Clock_125MHz ; 4.415 ; 4.608 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[2]  ; Clock_125MHz ; 4.445 ; 4.668 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[3]  ; Clock_125MHz ; 4.278 ; 4.470 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[4]  ; Clock_125MHz ; 4.292 ; 4.367 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[5]  ; Clock_125MHz ; 4.200 ; 4.321 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[6]  ; Clock_125MHz ; 4.466 ; 4.657 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[7]  ; Clock_125MHz ; 4.323 ; 4.508 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[8]  ; Clock_125MHz ; 4.433 ; 4.629 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[9]  ; Clock_125MHz ; 4.618 ; 4.832 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[10] ; Clock_125MHz ; 4.416 ; 4.596 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[11] ; Clock_125MHz ; 4.448 ; 4.603 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[12] ; Clock_125MHz ; 4.504 ; 4.691 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[13] ; Clock_125MHz ; 4.408 ; 4.580 ; Rise       ; Clock_125MHz    ;
++------------------+--------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------+
+; Propagation Delay                                                    ;
++------------------------------+-------------+-------+----+----+-------+
+; Input Port                   ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------------------------+-------------+-------+----+----+-------+
+; modulateur_bit_a_transmettre ; Output_test ; 4.149 ;    ;    ; 4.710 ;
++------------------------------+-------------+-------+----+----+-------+
+
+
++----------------------------------------------------------------------+
+; Minimum Propagation Delay                                            ;
++------------------------------+-------------+-------+----+----+-------+
+; Input Port                   ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------------------------+-------------+-------+----+----+-------+
+; modulateur_bit_a_transmettre ; Output_test ; 3.347 ;    ;    ; 3.886 ;
++------------------------------+-------------+-------+----+----+-------+
+
+
+---------------------------------------------
+; Fast 1100mV 0C Model Metastability Report ;
+---------------------------------------------
+No synchronizer chains to report.
+
+
++------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                          ;
++------------------+--------+-------+----------+---------+---------------------+
+; Clock            ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+--------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -0.917 ; 0.238 ; N/A      ; N/A     ; 3.111               ;
+;  Clock_125MHz    ; -0.917 ; 0.238 ; N/A      ; N/A     ; 3.111               ;
+; Design-wide TNS  ; -4.669 ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+;  Clock_125MHz    ; -4.669 ; 0.000 ; N/A      ; N/A     ; 0.000               ;
++------------------+--------+-------+----------+---------+---------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Setup Times                                                                                ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; Data Port                    ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; modulateur_bit_a_transmettre ; Clock_125MHz ; 1.196 ; 1.408 ; Rise       ; Clock_125MHz    ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Hold Times                                                                                 ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; Data Port                    ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+; modulateur_bit_a_transmettre ; Clock_125MHz ; 0.868 ; 0.712 ; Rise       ; Clock_125MHz    ;
++------------------------------+--------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------+
+; Clock to Output Times                                                            ;
++------------------+--------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port   ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+--------------+--------+--------+------------+-----------------+
+; Output_DAC0[*]   ; Clock_125MHz ; 18.944 ; 19.265 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[0]  ; Clock_125MHz ; 17.796 ; 18.098 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[1]  ; Clock_125MHz ; 18.441 ; 18.628 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[2]  ; Clock_125MHz ; 18.768 ; 19.076 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[3]  ; Clock_125MHz ; 16.370 ; 16.575 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[4]  ; Clock_125MHz ; 18.372 ; 18.389 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[5]  ; Clock_125MHz ; 16.228 ; 16.387 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[6]  ; Clock_125MHz ; 18.836 ; 19.080 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[7]  ; Clock_125MHz ; 18.365 ; 18.588 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[8]  ; Clock_125MHz ; 18.765 ; 18.979 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[9]  ; Clock_125MHz ; 18.914 ; 19.265 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[10] ; Clock_125MHz ; 18.707 ; 18.924 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[11] ; Clock_125MHz ; 18.547 ; 18.719 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[12] ; Clock_125MHz ; 18.944 ; 19.164 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[13] ; Clock_125MHz ; 18.487 ; 18.644 ; Rise       ; Clock_125MHz    ;
++------------------+--------------+--------+--------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                  ;
++------------------+--------------+-------+-------+------------+-----------------+
+; Data Port        ; Clock Port   ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------+--------------+-------+-------+------------+-----------------+
+; Output_DAC0[*]   ; Clock_125MHz ; 4.200 ; 4.321 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[0]  ; Clock_125MHz ; 4.307 ; 4.498 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[1]  ; Clock_125MHz ; 4.415 ; 4.608 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[2]  ; Clock_125MHz ; 4.445 ; 4.668 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[3]  ; Clock_125MHz ; 4.278 ; 4.470 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[4]  ; Clock_125MHz ; 4.292 ; 4.367 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[5]  ; Clock_125MHz ; 4.200 ; 4.321 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[6]  ; Clock_125MHz ; 4.466 ; 4.657 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[7]  ; Clock_125MHz ; 4.323 ; 4.508 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[8]  ; Clock_125MHz ; 4.433 ; 4.629 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[9]  ; Clock_125MHz ; 4.618 ; 4.832 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[10] ; Clock_125MHz ; 4.416 ; 4.596 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[11] ; Clock_125MHz ; 4.448 ; 4.603 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[12] ; Clock_125MHz ; 4.504 ; 4.691 ; Rise       ; Clock_125MHz    ;
+;  Output_DAC0[13] ; Clock_125MHz ; 4.408 ; 4.580 ; Rise       ; Clock_125MHz    ;
++------------------+--------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------+
+; Propagation Delay                                                    ;
++------------------------------+-------------+-------+----+----+-------+
+; Input Port                   ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------------------------+-------------+-------+----+----+-------+
+; modulateur_bit_a_transmettre ; Output_test ; 9.670 ;    ;    ; 9.894 ;
++------------------------------+-------------+-------+----+----+-------+
+
+
++----------------------------------------------------------------------+
+; Minimum Propagation Delay                                            ;
++------------------------------+-------------+-------+----+----+-------+
+; Input Port                   ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------------------------+-------------+-------+----+----+-------+
+; modulateur_bit_a_transmettre ; Output_test ; 3.347 ;    ;    ; 3.886 ;
++------------------------------+-------------+-------+----+----+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                                      ;
++-----------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin             ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++-----------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Output_DAC0[0]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[1]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[2]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[3]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[4]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[5]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[6]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[7]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[8]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[9]  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[10] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[11] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[12] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_DAC0[13] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; Output_test     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++-----------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++---------------------------------------------------------------------------------+
+; Input Transition Times                                                          ;
++------------------------------+--------------+-----------------+-----------------+
+; Pin                          ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
++------------------------------+--------------+-----------------+-----------------+
+; Clock_2MHz                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; Clock_50MHz                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; Clock_62p5MHz                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; aclr                         ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; aclr_2                       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; aclr_62p5                    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; modulateur_bitclock_i        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; modulateur_bitclock_q        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; modulateur_enable            ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; modulateur_bit_a_transmettre ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; Clock_125MHz                 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; aclr_125                     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
++------------------------------+--------------+-----------------+-----------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1100mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin             ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Output_DAC0[0]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.86e-08 V                   ; 2.4 V               ; -0.0326 V           ; 0.227 V                              ; 0.16 V                               ; 4.73e-10 s                  ; 4.78e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.86e-08 V                  ; 2.4 V              ; -0.0326 V          ; 0.227 V                             ; 0.16 V                              ; 4.73e-10 s                 ; 4.78e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[1]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.86e-08 V                   ; 2.4 V               ; -0.0326 V           ; 0.227 V                              ; 0.16 V                               ; 4.73e-10 s                  ; 4.78e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.86e-08 V                  ; 2.4 V              ; -0.0326 V          ; 0.227 V                             ; 0.16 V                              ; 4.73e-10 s                 ; 4.78e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[2]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.0409 V           ; 0.192 V                              ; 0.125 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.0409 V          ; 0.192 V                             ; 0.125 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[3]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.0409 V           ; 0.192 V                              ; 0.125 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.0409 V          ; 0.192 V                             ; 0.125 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[4]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 5.91e-08 V                   ; 2.35 V              ; -0.0136 V           ; 0.17 V                               ; 0.118 V                              ; 4.69e-10 s                  ; 4.63e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 5.91e-08 V                  ; 2.35 V             ; -0.0136 V          ; 0.17 V                              ; 0.118 V                             ; 4.69e-10 s                 ; 4.63e-10 s                 ; Yes                       ; Yes                       ;
+; Output_DAC0[5]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 5.91e-08 V                   ; 2.35 V              ; -0.0136 V           ; 0.17 V                               ; 0.118 V                              ; 4.69e-10 s                  ; 4.63e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 5.91e-08 V                  ; 2.35 V             ; -0.0136 V          ; 0.17 V                              ; 0.118 V                             ; 4.69e-10 s                 ; 4.63e-10 s                 ; Yes                       ; Yes                       ;
+; Output_DAC0[6]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[7]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 5.91e-08 V                   ; 2.35 V              ; -0.0136 V           ; 0.17 V                               ; 0.118 V                              ; 4.69e-10 s                  ; 4.63e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 5.91e-08 V                  ; 2.35 V             ; -0.0136 V          ; 0.17 V                              ; 0.118 V                             ; 4.69e-10 s                 ; 4.63e-10 s                 ; Yes                       ; Yes                       ;
+; Output_DAC0[8]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[9]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.0409 V           ; 0.192 V                              ; 0.125 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.0409 V          ; 0.192 V                             ; 0.125 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[10] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 5.91e-08 V                   ; 2.35 V              ; -0.0136 V           ; 0.17 V                               ; 0.118 V                              ; 4.69e-10 s                  ; 4.63e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 5.91e-08 V                  ; 2.35 V             ; -0.0136 V          ; 0.17 V                              ; 0.118 V                             ; 4.69e-10 s                 ; 4.63e-10 s                 ; Yes                       ; Yes                       ;
+; Output_DAC0[11] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.041 V            ; 0.19 V                               ; 0.126 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.041 V           ; 0.19 V                              ; 0.126 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[12] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.86e-08 V                   ; 2.4 V               ; -0.0326 V           ; 0.227 V                              ; 0.16 V                               ; 4.73e-10 s                  ; 4.78e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.86e-08 V                  ; 2.4 V              ; -0.0326 V          ; 0.227 V                             ; 0.16 V                              ; 4.73e-10 s                 ; 4.78e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[13] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.86e-08 V                   ; 2.4 V               ; -0.0326 V           ; 0.227 V                              ; 0.16 V                               ; 4.73e-10 s                  ; 4.78e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.86e-08 V                  ; 2.4 V              ; -0.0326 V          ; 0.227 V                             ; 0.16 V                              ; 4.73e-10 s                 ; 4.78e-10 s                 ; No                        ; Yes                       ;
+; Output_test     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.72e-08 V                   ; 2.4 V               ; -0.0409 V           ; 0.192 V                              ; 0.125 V                              ; 4.59e-10 s                  ; 4.54e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 6.72e-08 V                  ; 2.4 V              ; -0.0409 V          ; 0.192 V                             ; 0.125 V                             ; 4.59e-10 s                 ; 4.54e-10 s                 ; No                        ; Yes                       ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1100mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin             ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Output_DAC0[0]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.05e-05 V                   ; 2.37 V              ; -0.0225 V           ; 0.277 V                              ; 0.104 V                              ; 5.22e-10 s                  ; 6.28e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.05e-05 V                  ; 2.37 V             ; -0.0225 V          ; 0.277 V                             ; 0.104 V                             ; 5.22e-10 s                 ; 6.28e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[1]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.05e-05 V                   ; 2.37 V              ; -0.0225 V           ; 0.277 V                              ; 0.104 V                              ; 5.22e-10 s                  ; 6.28e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.05e-05 V                  ; 2.37 V             ; -0.0225 V          ; 0.277 V                             ; 0.104 V                             ; 5.22e-10 s                 ; 6.28e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[2]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.027 V            ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.027 V           ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.18e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[3]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.027 V            ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.027 V           ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.18e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[4]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 9.38e-06 V                   ; 2.34 V              ; -0.00733 V          ; 0.234 V                              ; 0.071 V                              ; 5.36e-10 s                  ; 5.75e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 9.38e-06 V                  ; 2.34 V             ; -0.00733 V         ; 0.234 V                             ; 0.071 V                             ; 5.36e-10 s                 ; 5.75e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[5]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 9.38e-06 V                   ; 2.34 V              ; -0.00733 V          ; 0.234 V                              ; 0.071 V                              ; 5.36e-10 s                  ; 5.75e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 9.38e-06 V                  ; 2.34 V             ; -0.00733 V         ; 0.234 V                             ; 0.071 V                             ; 5.36e-10 s                 ; 5.75e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[6]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[7]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 9.38e-06 V                   ; 2.34 V              ; -0.00733 V          ; 0.234 V                              ; 0.071 V                              ; 5.36e-10 s                  ; 5.75e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 9.38e-06 V                  ; 2.34 V             ; -0.00733 V         ; 0.234 V                             ; 0.071 V                             ; 5.36e-10 s                 ; 5.75e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[8]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[9]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.027 V            ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.027 V           ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.18e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[10] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 9.38e-06 V                   ; 2.34 V              ; -0.00733 V          ; 0.234 V                              ; 0.071 V                              ; 5.36e-10 s                  ; 5.75e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 9.38e-06 V                  ; 2.34 V             ; -0.00733 V         ; 0.234 V                             ; 0.071 V                             ; 5.36e-10 s                 ; 5.75e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[11] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.0273 V           ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.19e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.0273 V          ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.19e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[12] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.05e-05 V                   ; 2.37 V              ; -0.0225 V           ; 0.277 V                              ; 0.104 V                              ; 5.22e-10 s                  ; 6.28e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.05e-05 V                  ; 2.37 V             ; -0.0225 V          ; 0.277 V                             ; 0.104 V                             ; 5.22e-10 s                 ; 6.28e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[13] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.05e-05 V                   ; 2.37 V              ; -0.0225 V           ; 0.277 V                              ; 0.104 V                              ; 5.22e-10 s                  ; 6.28e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.05e-05 V                  ; 2.37 V             ; -0.0225 V          ; 0.277 V                             ; 0.104 V                             ; 5.22e-10 s                 ; 6.28e-10 s                 ; No                        ; Yes                       ;
+; Output_test     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.04e-05 V                   ; 2.38 V              ; -0.027 V            ; 0.226 V                              ; 0.08 V                               ; 4.84e-10 s                  ; 5.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.04e-05 V                  ; 2.38 V             ; -0.027 V           ; 0.226 V                             ; 0.08 V                              ; 4.84e-10 s                 ; 5.18e-10 s                 ; No                        ; Yes                       ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1100mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin             ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Output_DAC0[0]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[1]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[2]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; Output_DAC0[3]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; Output_DAC0[4]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[5]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[6]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; Output_DAC0[7]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[8]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; Output_DAC0[9]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; Output_DAC0[10] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[11] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; Output_DAC0[12] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[13] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
+; Output_test     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1100mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin             ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Output_DAC0[0]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[1]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[2]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[3]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[4]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[5]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[6]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[7]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[8]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[9]  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[10] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
+; Output_DAC0[11] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[12] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
+; Output_DAC0[13] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
+; Output_test     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
++-----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------------+
+; Setup Transfers                                                         ;
++--------------+--------------+----------+----------+----------+----------+
+; From Clock   ; To Clock     ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++--------------+--------------+----------+----------+----------+----------+
+; Clock_125MHz ; Clock_125MHz ; 2807     ; 0        ; 0        ; 0        ;
++--------------+--------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------------+
+; Hold Transfers                                                          ;
++--------------+--------------+----------+----------+----------+----------+
+; From Clock   ; To Clock     ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++--------------+--------------+----------+----------+----------+----------+
+; Clock_125MHz ; Clock_125MHz ; 2807     ; 0        ; 0        ; 0        ;
++--------------+--------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 2     ; 2    ;
+; Unconstrained Input Port Paths  ; 57    ; 57   ;
+; Unconstrained Output Ports      ; 15    ; 15   ;
+; Unconstrained Output Port Paths ; 298   ; 298  ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 14.0.0 Build 200 06/17/2014 SJ Full Version
+    Info: Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus II License Agreement,
+    Info: the Altera MegaCore Function License Agreement, or other 
+    Info: applicable license agreement, including, without limitation, 
+    Info: that your use is for the sole purpose of programming logic 
+    Info: devices manufactured by Altera and sold by Altera or its 
+    Info: authorized distributors.  Please refer to the applicable 
+    Info: agreement for further details.
+    Info: Processing started: Thu Jul 10 07:29:45 2014
+Info: Command: quartus_sta Squelette_DSPBuilder
+Info: qsta_default_script.tcl version: #1
+Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '85'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Info (332104): Reading SDC File: 'Squelette_DSPBuilder.sdc'
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1100mV 85C Model
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -0.639
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.639              -2.628 Clock_125MHz 
+Info (332146): Worst-case hold slack is 0.610
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.610               0.000 Clock_125MHz 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 3.241
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     3.241               0.000 Clock_125MHz 
+Info: Analyzing Slow 1100mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -0.917
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.917              -4.669 Clock_125MHz 
+Info (332146): Worst-case hold slack is 0.604
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.604               0.000 Clock_125MHz 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 3.111
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     3.111               0.000 Clock_125MHz 
+Info: Analyzing Fast 1100mV 85C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info (332146): Worst-case setup slack is 4.493
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     4.493               0.000 Clock_125MHz 
+Info (332146): Worst-case hold slack is 0.250
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.250               0.000 Clock_125MHz 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 3.414
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     3.414               0.000 Clock_125MHz 
+Info: Analyzing Fast 1100mV 0C Model
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info (332146): Worst-case setup slack is 4.695
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     4.695               0.000 Clock_125MHz 
+Info (332146): Worst-case hold slack is 0.238
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.238               0.000 Clock_125MHz 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 3.413
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     3.413               0.000 Clock_125MHz 
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 941 megabytes
+    Info: Processing ended: Thu Jul 10 07:30:24 2014
+    Info: Elapsed time: 00:00:39
+    Info: Total CPU time (on all processors): 00:00:35
+
+

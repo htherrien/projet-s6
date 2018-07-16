@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jvgen name="alt_dspbuilder_clock" family="Cyclone" style="SUPERSET"
+    fixed-name="false" temporary="false">
+    <instance version="14.0" decorated-name="alt_dspbuilder_clock_GNF343OQUJ">
+        <generic name="RESET" value="ACTIVE_LOW"/>
+        <port name="aclr_n" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="aclr_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <port name="clock" dir="Input" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <port name="clock_out" dir="Output" vhdl-type="std_logic"
+            width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_clock_GNF343OQUJ.vhd"/>
+    </instance>
+    <supersetport name="clock_out" dir="Output" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="clock" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="aclr_out" dir="Output" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="aclr" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <supersetport name="aclr_n" dir="Input" vhdl-type="std_logic" lowerbound="0"/>
+    <parameter-static name="DOMAIN" default="default" type="STRING"/>
+    <parameter-static name="RESET" default="ACTIVE_HIGH" type="STRING"/>
+</jvgen>

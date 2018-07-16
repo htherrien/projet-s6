@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jvgen name="alt_dspbuilder_vcc" family="Cyclone" style="SUPERSET"
+    fixed-name="false" temporary="false">
+    <instance version="14.0" decorated-name="alt_dspbuilder_vcc_GN">
+        <port name="output" dir="Output" vhdl-type="std_logic" width="1" lowerbound="0"/>
+        <generated-file file-type="VHDL" filename="alt_dspbuilder_vcc_GN.vhd"/>
+    </instance>
+    <supersetport name="output" dir="Output" vhdl-type="std_logic" lowerbound="0"/>
+</jvgen>
