@@ -1,14 +1,14 @@
 Fe = 100e6;
 F_10M = 10.7e6;
-F_500k = 0.5e6;
-A = 516;
+F_500k = 0.4e6;
+A = 4096;
 phi = -pi/2;
 
-a1_10M = 2*cos(2*pi*F_10M/Fe) * 2^16;
+a1_10M = round(2*cos(2*pi*F_10M/Fe) * 2^16);
 y_n_1_10M = round(A*cos(phi - 2*pi*F_10M/Fe));
 y_n_2_10M = round(A*cos(phi - 4*pi*F_10M/Fe));
 
-a1_500k = 2*cos(2*pi*F_500k/Fe) * 2^16;
+a1_500k = round(2*cos(2*pi*F_500k/Fe) * 2^16);
 y_n_1_500k = round(A*cos(phi - 2*pi*F_500k/Fe));
 y_n_2_500k = round(A*cos(phi - 4*pi*F_500k/Fe));
 
