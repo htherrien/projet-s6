@@ -14,6 +14,16 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+//TODO : Ajouter documentation
+float getTHD(void);
+
+float getPF(void);
+
+float getVrms(void);
+
+float getIrms(void);
+
+
 /**
  * Sends data to the specified ADE9000 address using SPI.
  * Consider using ADE9000Write[16|32] instead.

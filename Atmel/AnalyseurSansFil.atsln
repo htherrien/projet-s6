@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "AnalyseurSansFil", "AnalyseurSansFil\AnalyseurSansFil.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ADE9000", "ADE9000\ADE9000.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Wireless", "Wireless\Wireless.cproj", "{DDF086A5-098C-4886-A471-65DB11F931A1}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Serveur", "Serveur\Serveur.cproj", "{11FCF8DC-3188-4C8B-8D0C-98507CC630FD}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Client", "Client\Client.cproj", "{04A469EA-22A6-4A12-AF28-128208B1DFCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = Debug|AVR
 		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = Release|AVR
 		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = Release|AVR
+		{DDF086A5-098C-4886-A471-65DB11F931A1}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DDF086A5-098C-4886-A471-65DB11F931A1}.Debug|AVR.Build.0 = Debug|AVR
+		{DDF086A5-098C-4886-A471-65DB11F931A1}.Release|AVR.ActiveCfg = Release|AVR
+		{DDF086A5-098C-4886-A471-65DB11F931A1}.Release|AVR.Build.0 = Release|AVR
+		{11FCF8DC-3188-4C8B-8D0C-98507CC630FD}.Debug|AVR.ActiveCfg = Debug|AVR
+		{11FCF8DC-3188-4C8B-8D0C-98507CC630FD}.Debug|AVR.Build.0 = Debug|AVR
+		{11FCF8DC-3188-4C8B-8D0C-98507CC630FD}.Release|AVR.ActiveCfg = Release|AVR
+		{11FCF8DC-3188-4C8B-8D0C-98507CC630FD}.Release|AVR.Build.0 = Release|AVR
+		{04A469EA-22A6-4A12-AF28-128208B1DFCA}.Debug|AVR.ActiveCfg = Debug|AVR
+		{04A469EA-22A6-4A12-AF28-128208B1DFCA}.Debug|AVR.Build.0 = Debug|AVR
+		{04A469EA-22A6-4A12-AF28-128208B1DFCA}.Release|AVR.ActiveCfg = Release|AVR
+		{04A469EA-22A6-4A12-AF28-128208B1DFCA}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
