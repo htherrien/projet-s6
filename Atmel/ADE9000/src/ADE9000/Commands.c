@@ -35,32 +35,35 @@ typedef union {
 
 static const uint16_t ENABLE_DSP = 0x0001;
 
-// Measurement magic numbers
+// Measurement conversion factors
 static const float CONV_PF_THD = 0.000000007450580597f; // 2^-27
-static const float FULL_SCALE_RMS = 52702092.0f; // ADE9000 factor for RMS values
-static const float V_NOMINAL = 120.0f; // Denormalizing factor 1V to 120V
-static const float V_CORR = 1.188f;  // Normalizing factor when on the 10uF cap
-static const float I_NOMINAL = 5.0f; // Denormalizing factor 1A to 5A
-static const float I_CORR = 1.1f;    // Normalizing factor when on the 10uF cap
+static const float FULL_SCALE_RMS =
+    52702092.0f; // ADE9000 factor for RMS values
 
-float getTHD()
+float getTHD(void)
 {
-	return (float)ADE9000Read32(ADDR_AVTHD) * CONV_PF_THD * 100.0f;
+    return (float)ADE9000Read32(ADDR_AVTHD) * CONV_PF_THD * 100.0f;
 }
 
-float getPF()
+float getPF(void)
 {
-	return (float)ADE9000Read32(ADDR_APF) * CONV_PF_THD;
+    return (float)ADE9000Read32(ADDR_APF) * CONV_PF_THD;
 }
 
-float getVrms()
+float getVrms(void)
 {
-	return (float)ADE9000Read32(ADDR_AVRMS) / FULL_SCALE_RMS * V_NOMINAL * V_CORR;
+    static const float V_NOMINAL = 120.0f; // Denormalizing factor 1V to 120V
+    static const float V_CORR = 1.188f; // Normalizing factor for the 10uf cap
+    return (float)ADE9000Read32(ADDR_AVRMS) / FULL_SCALE_RMS * V_NOMINAL *
+           V_CORR;
 }
 
-float getIrms()
+float getIrms(void)
 {
-	return (float)ADE9000Read32(ADDR_AIRMS) / FULL_SCALE_RMS * I_NOMINAL * I_CORR;
+    static const float I_NOMINAL = 5.0f; // Denormalizing factor 1A to 5A
+    static const float I_CORR = 1.1f;    // Normalizing factor for the 10uF cap
+    return (float)ADE9000Read32(ADDR_AIRMS) / FULL_SCALE_RMS * I_NOMINAL *
+           I_CORR;
 }
 
 void ADE9000Write(uint16_t address, size_t n, const uint8_t* data)
