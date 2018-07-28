@@ -170,9 +170,6 @@
     <Compile Include="src\ADE9000\Commands.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\Fuses.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="src\SPI.c">
       <SubType>compile</SubType>
     </Compile>
