@@ -35,10 +35,10 @@ typedef union {
 
 static const uint16_t ENABLE_DSP = 0x0001;
 
-// Measurement conversion factors
+// ADE9000 PF and THD multiplication factor from Q5.27 to float
 static const float CONV_PF_THD = 0.000000007450580597f; // 2^-27
-static const float FULL_SCALE_RMS =
-    52702092.0f; // ADE9000 factor for RMS values
+// ADE9000 division factor for obtaining the full scale RMS values
+static const float FULL_SCALE_RMS = 52702092.0f;
 
 float getTHD(void)
 {
@@ -52,7 +52,7 @@ float getPF(void)
 
 float getVrms(void)
 {
-    static const float V_NOMINAL = 120.0f; // Denormalizing factor 1V to 120V
+    static const float V_NOMINAL = 120.0f; // Multiplication factor 1V to 120V
     static const float V_CORR = 1.188f; // Normalizing factor for the 10uf cap
     return (float)ADE9000Read32(ADDR_AVRMS) / FULL_SCALE_RMS * V_NOMINAL *
            V_CORR;
@@ -60,7 +60,7 @@ float getVrms(void)
 
 float getIrms(void)
 {
-    static const float I_NOMINAL = 5.0f; // Denormalizing factor 1A to 5A
+    static const float I_NOMINAL = 5.0f; // Multiplication factor 1A to 5A
     static const float I_CORR = 1.1f;    // Normalizing factor for the 10uF cap
     return (float)ADE9000Read32(ADDR_AIRMS) / FULL_SCALE_RMS * I_NOMINAL *
            I_CORR;

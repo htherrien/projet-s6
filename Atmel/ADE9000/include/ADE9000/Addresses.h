@@ -33,7 +33,8 @@
 /** Accumulation mode register. Configures the frequency. */
 #define ADDR_ACCMODE 0x492
 /** This register sets the phase used as the reference period and the phase
- * used as zero-crossing reference. */
+ * used as zero-crossing reference. 
+ */
 #define ADDR_ZX_LP_SEL 0x49A
 /** Reading this address will yield the address of the last command. */
 #define ADDR_LAST_CMD 0x4AE
