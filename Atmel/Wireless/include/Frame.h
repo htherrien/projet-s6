@@ -30,10 +30,10 @@ typedef struct Packet
 {
     struct HeaderStruct
     {
-        uint8_t h1 : 1; // 0xAD
-        uint8_t h2 : 1; // 0xE9
-        uint8_t h3 : 1; // 0x00
-        PacketFlags flags : 1;// TODO fit enum into a byte
+        uint8_t h1 : 1;        // 0xAD
+        uint8_t h2 : 1;        // 0xE9
+        uint8_t h3 : 1;        // 0x00
+        PacketFlags flags : 1; // TODO fit enum into a byte
     } header;
     ADE9000Data_t payload;
     uint32_t crc32;
@@ -46,7 +46,7 @@ typedef struct Packet
  * @param[in] data the struct containing the ADE9000 measurements to be sent.
  * @return the size of the packet
  */
-size_t buildDataPacket(Packet* packet, const ADE9000Data_t* data);
+uint8_t buildDataPacket(Packet* packet, const ADE9000Data_t* data);
 
 /**
  * Build a command packet.
@@ -55,7 +55,7 @@ size_t buildDataPacket(Packet* packet, const ADE9000Data_t* data);
  * @param[in] flags the flags of the packet
  * @return the size of the packet, in bytes
  */
-size_t buildCommandPacket(Packet* packet, const PacketFlags flags);
+uint8_t buildCommandPacket(Packet* packet, const PacketFlags flags);
 
 /**
  * Verifies that the packet is valid by checking its header and CRC
@@ -63,6 +63,14 @@ size_t buildCommandPacket(Packet* packet, const PacketFlags flags);
  * @return true if the packet is valid, false otherwise
  */
 bool isPacketValid(const Packet* packet);
+
+/**
+ * Stores the packet if it is valid.
+ * @param[out] packet the preallocated packet buffer to store the packet if it
+ * is valid
+ * @return true if the packet is valid, false otherwise
+ */
+bool storePacketIfValid(Packet* packet);
 
 /**
  * Perform crc-32 on a buffer
