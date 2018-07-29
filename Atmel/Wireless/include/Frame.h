@@ -30,10 +30,10 @@ typedef struct Packet
 {
     struct HeaderStruct
     {
-        uint8_t h1 : 1;        // 0xAD
-        uint8_t h2 : 1;        // 0xE9
-        uint8_t h3 : 1;        // 0x00
-        PacketFlags flags : 1; // TODO fit enum into a byte
+        uint8_t h1 : 8;        // 0xAD
+        uint8_t h2 : 8;        // 0xE9
+        uint8_t h3 : 8;        // 0x00
+        PacketFlags flags : 8;
     } header;
     ADE9000Data_t payload;
     uint32_t crc32;
