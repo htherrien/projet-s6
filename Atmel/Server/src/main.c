@@ -12,13 +12,30 @@
  */
 
 #include "UART.h"
+#include "wireless.h"
 
+void APP_TaskHandler(void)
+{
+	uint8_t receivedUART = UARTRead();
+	if(receivedUART)		//est-ce qu'un caractere a été recu par l'UART?
+	{
+		write_Wireless(&receivedUART, 1);
+	}
+	if (hasReceivedWireless())
+	{
+		UARTWrite(*(getWirelessData()));
+		resetReceivedWireless();
+	}
+}
 int main(void)
 {
 	UARTInit();
+	SYS_Init();
 	for(;;)
 	{
-		UARTWrite('a');	
+		PHY_TaskHandler();
+		APP_TaskHandler();
 	}
     return 1;
 }
+

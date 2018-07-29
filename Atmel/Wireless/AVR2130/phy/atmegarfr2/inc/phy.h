@@ -83,10 +83,10 @@ void PHY_SetTxPower(uint8_t txPower);
 void PHY_Sleep(void);
 void PHY_Wakeup(void);
 //void PHY_DataReq(uint8_t *data, uint8_t size);
-void Ecris_Wireless(uint8_t *data, uint8_t size); //VR
+void _write_Wireless(uint8_t *data, uint8_t size); //VR
 void PHY_DataConf(uint8_t status);
 void PHY_DataInd(PHY_DataInd_t *ind);
-void PHY_TaskHandler(void);
+void _PHY_TaskHandler(void);
 
 #ifdef PHY_ENABLE_ENERGY_DETECTION
 int8_t PHY_EdReq(void);

@@ -146,7 +146,7 @@ void PHY_SetTxPower(uint8_t txPower)
 /*************************************************************************//**
 *****************************************************************************/
 //void PHY_DataReq(uint8_t *data, uint8_t size)
-void Ecris_Wireless(uint8_t *data, uint8_t size) //VR
+void _write_Wireless(uint8_t *data, uint8_t size) //VR
 {
   //phyTrxSetState(TRX_CMD_TX_ARET_ON); //VR
   phyTrxSetState(TRX_CMD_PLL_ON); 
@@ -219,7 +219,7 @@ static void phyTrxSetState(uint8_t state)
 
 /*************************************************************************//**
 *****************************************************************************/
-void PHY_TaskHandler(void)
+void _PHY_TaskHandler(void)
 {
   if (PHY_STATE_SLEEP == phyState)
     return;
