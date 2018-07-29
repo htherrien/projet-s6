@@ -30,10 +30,10 @@ typedef struct Packet
 {
     struct HeaderStruct
     {
-        uint8_t h1 : 8;        // 0xAD
-        uint8_t h2 : 8;        // 0xE9
-        uint8_t h3 : 8;        // 0x00
-        PacketFlags flags : 8; // TODO fit enum into a byte
+        uint8_t h1 : 8; // 0xAD
+        uint8_t h2 : 8; // 0xE9
+        uint8_t h3 : 8; // 0x00
+        PacketFlags flags : 8;
     } header;
     ADE9000Data_t payload;
     uint32_t crc32;
@@ -90,3 +90,13 @@ crc32(uint8_t* data, size_t len, uint32_t poly, uint32_t initialValue);
  * @param[in] flags the flags of the packet
  */
 void sendCommand(uint8_t flags);
+/**
+ * Perform a byte reversal of a 4-byte integer. Useful for changing endianness
+ * @param[in] val the value to have its bytes reversed
+ * @return the value with its bytes in reverse order
+ */
+uint32_t swap_uint32(uint32_t val)
+{
+    val = ((val << 8) & 0xFF00FF00) | ((val >> 8) & 0xFF00FF);
+    return (val << 16) | (val >> 16);
+}
