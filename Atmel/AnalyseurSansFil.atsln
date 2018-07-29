@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "libADE9000", "ADE9000\libADE9000.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ADE9000", "ADE9000\ADE9000.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "libWireless", "Wireless\libWireless.cproj", "{DDF086A5-098C-4886-A471-65DB11F931A1}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Wireless", "Wireless\Wireless.cproj", "{DDF086A5-098C-4886-A471-65DB11F931A1}"
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Client", "Client\Client.cproj", "{259EC3B7-E908-4164-85ED-0406C06ACD14}"
 EndProject
