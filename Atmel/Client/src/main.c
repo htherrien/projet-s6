@@ -16,15 +16,14 @@
 
 #include "wireless.h"
 #include "Frame.h"
-
+void APP_TaskHandler(void);
 void APP_TaskHandler(void)
 {
     static int sendDataRealtime = 0; // Send data to server flag
     int sendDataOnce = 0;
     int sendPong = 0;
 
-	// Receive data
-    {
+
         Packet rxPacket;
         if(hasReceivedWireless() && storePacketIfValid(&rxPacket))
         {
@@ -44,7 +43,6 @@ void APP_TaskHandler(void)
             }
             resetReceivedWireless();
         }
-    }
 
 	// Send data
     if(sendDataRealtime || sendDataOnce)

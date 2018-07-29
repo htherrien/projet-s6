@@ -51,7 +51,7 @@ uint8_t buildCommandPacket(Packet* packet, const uint8_t flags)
     memset(packet, 0, sizeof(Packet));
 
     // Build header
-    packet->header.h1 = 0xAD;
+    packet->header.h1 = FIRST_HEADER_BYTE;
     packet->header.h2 = SECOND_HEADER_BYTE;
     packet->header.h3 = THIRD_HEADER_BYTE;
     packet->header.flags = flags;
@@ -67,11 +67,11 @@ uint8_t buildCommandPacket(Packet* packet, const uint8_t flags)
     return sizeof(Packet);
 }
 
-bool isPacketValid(const Packet* packet)
+bool isPacketValid(Packet* packet)
 {
     if(packet->header.h1 != FIRST_HEADER_BYTE ||
-       packet->header.h1 != SECOND_HEADER_BYTE ||
-       packet->header.h1 != THIRD_HEADER_BYTE)
+       packet->header.h2 != SECOND_HEADER_BYTE ||
+       packet->header.h3 != THIRD_HEADER_BYTE)
     {
         return false;
     }

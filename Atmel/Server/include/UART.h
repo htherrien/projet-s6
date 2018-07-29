@@ -29,3 +29,9 @@ void UARTWrite(uint8_t);
  * Enable and configure the UART bus for communication at 9600 bps.
  */
 void UARTInit(void);
+
+/**
+ * Write a string on UART like you would with printf().
+ * @param[in] same as printf
+ */
+void writeStrUART(const char* format, ...);

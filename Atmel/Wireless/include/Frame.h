@@ -62,7 +62,7 @@ uint8_t buildCommandPacket(Packet* packet, const PacketFlags flags);
  * @param[in] packet the preallocated packet buffer to validate
  * @return true if the packet is valid, false otherwise
  */
-bool isPacketValid(const Packet* packet);
+bool isPacketValid(Packet* packet);
 
 /**
  * Stores the packet if it is valid.
@@ -95,8 +95,4 @@ void sendCommand(uint8_t flags);
  * @param[in] val the value to have its bytes reversed
  * @return the value with its bytes in reverse order
  */
-uint32_t swap_uint32(uint32_t val)
-{
-    val = ((val << 8) & 0xFF00FF00) | ((val >> 8) & 0xFF00FF);
-    return (val << 16) | (val >> 16);
-}
+uint32_t swap_uint32(uint32_t val);

@@ -10,8 +10,12 @@
  */
 
 #include <avr/io.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
 
 #include "UART.h"
+
 
 uint8_t UARTRead(void)
 {
@@ -43,4 +47,19 @@ void UARTInit(void)
 	UCSR1A = 0x00;
 	UCSR1B = 0x18; //receiver, transmitter enable, no parity
 	UCSR1C = 0x06; //8-bits per character, 1 stop bit
+}
+
+void writeStrUART(const char* format, ...)
+{
+	char buf[200];
+	va_list argptr;
+	va_start(argptr, format);
+	vsprintf(buf, format, argptr);
+	va_end(argptr);
+	
+	for (int i = 0; i < strlen(buf); i++)
+	{
+		UARTWrite(buf[i]);
+	}
+	
 }
