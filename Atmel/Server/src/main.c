@@ -11,7 +11,14 @@
  * and the computer.
  */
 
+#include "UART.h"
+
 int main(void)
 {
+	UARTInit();
+	for(;;)
+	{
+		UARTWrite('a');	
+	}
     return 1;
 }
