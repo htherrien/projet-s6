@@ -45,7 +45,7 @@ uint8_t buildCommandPacket(Packet* packet, const uint8_t flags)
     memset(packet, 0, sizeof(Packet));
 
     // Build header
-    packet->header.h1 = FIRST_HEADER_BYTE;
+    packet->header.h1 = 0xAD;
     packet->header.h2 = SECOND_HEADER_BYTE;
     packet->header.h3 = THIRD_HEADER_BYTE;
     packet->header.flags = flags;
@@ -115,4 +115,11 @@ uint32_t crc32(uint8_t* data, size_t len, uint32_t poly, uint32_t initialValue)
         }
     }
     return crc;
+}
+
+void sendCommand(uint8_t flags)
+{
+	Packet txPacket;
+	write_Wireless((uint8_t*)&txPacket,
+					buildCommandPacket(&txPacket, flags));
 }

@@ -30,10 +30,10 @@ typedef struct Packet
 {
     struct HeaderStruct
     {
-        uint8_t h1 : 1;        // 0xAD
-        uint8_t h2 : 1;        // 0xE9
-        uint8_t h3 : 1;        // 0x00
-        PacketFlags flags : 1; // TODO fit enum into a byte
+        uint8_t h1 : 8;        // 0xAD
+        uint8_t h2 : 8;        // 0xE9
+        uint8_t h3 : 8;        // 0x00
+        PacketFlags flags : 8; // TODO fit enum into a byte
     } header;
     ADE9000Data_t payload;
     uint32_t crc32;
@@ -84,3 +84,9 @@ bool storePacketIfValid(Packet* packet);
  */
 uint32_t
 crc32(uint8_t* data, size_t len, uint32_t poly, uint32_t initialValue);
+
+/**
+ * Send an empty packet with the correct flags
+ * @param[in] flags the flags of the packet
+ */
+void sendCommand(uint8_t flags);
