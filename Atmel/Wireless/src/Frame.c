@@ -16,6 +16,12 @@ static const uint8_t FIRST_HEADER_BYTE = 0xAD;
 static const uint8_t SECOND_HEADER_BYTE = 0xE9;
 static const uint8_t THIRD_HEADER_BYTE = 0x00;
 
+uint32_t swap_uint32(uint32_t val)
+{
+    val = ((val << 8) & 0xFF00FF00) | ((val >> 8) & 0xFF00FF);
+    return (val << 16) | (val >> 16);
+}
+
 uint8_t buildDataPacket(Packet* packet, const ADE9000Data_t* data)
 {
     // Clear packet data
@@ -31,10 +37,10 @@ uint8_t buildDataPacket(Packet* packet, const ADE9000Data_t* data)
     packet->payload = *data;
 
     // Compute crc32 and store it in the packet
-    packet->crc32 = crc32((uint8_t*)packet,
-                          sizeof(Packet) - sizeof(uint32_t),
-                          CRC_32_IEEE_POLY,
-                          0);
+    packet->crc32 = swap_uint32(crc32((uint8_t*)packet,
+                                      sizeof(Packet) - sizeof(uint32_t),
+                                      CRC_32_IEEE_POLY,
+                                      0));
 
     return sizeof(Packet);
 }
@@ -53,10 +59,10 @@ uint8_t buildCommandPacket(Packet* packet, const uint8_t flags)
     // No data to store
 
     // Compute crc32 and store it in the packet
-    packet->crc32 = crc32((uint8_t*)packet,
-                          sizeof(Packet) - sizeof(uint32_t),
-                          CRC_32_IEEE_POLY,
-                          0);
+    packet->crc32 = swap_uint32(crc32((uint8_t*)packet,
+                                      sizeof(Packet) - sizeof(uint32_t),
+                                      CRC_32_IEEE_POLY,
+                                      0));
 
     return sizeof(Packet);
 }
@@ -80,9 +86,9 @@ bool isPacketValid(const Packet* packet)
 
 bool storePacketIfValid(Packet* packet)
 {
-	// Precondition
-	assert(hasReceivedWireless());
-	
+    // Precondition
+    assert(hasReceivedWireless());
+
     uint8_t rawDataSize = getWirelessSize();
     if(rawDataSize != sizeof(Packet))
     {
