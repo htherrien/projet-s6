@@ -1,6 +1,6 @@
 /*******************************************************************************
  *
- * Copyright (c) Projet S6, Équipe P4
+ * Copyright (c) Projet S6, Ã‰quipe P4
  *
  ******************************************************************************/
 
@@ -15,9 +15,7 @@
 
 /**
  * Read a byte from the UART bus.
- * @return the current byte on the UART bus
- * @warning This function is blocking, since it waits
- *          for data to be available
+ * @return the current byte on the UART bus. If there is no data, the function returns 0.
  */
 uint8_t UARTRead(void);
 
