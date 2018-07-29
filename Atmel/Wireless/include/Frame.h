@@ -18,6 +18,14 @@ typedef struct ADE9000Data_t
     float iRms; // line A RMS current
 } ADE9000Data_t;
 
+typedef enum PacketFlags
+{
+    ADE9000_DATA_PACKET = 1,
+    TOGGLE_REALTIME_PACKET,
+    PING_PACKET,
+    REQUEST_DATA_PACKET
+} PacketFlags;
+
 typedef struct Packet
 {
     struct HeaderStruct
@@ -25,19 +33,11 @@ typedef struct Packet
         uint8_t h1 : 1; // 0xAD
         uint8_t h2 : 1; // 0xE9
         uint8_t h3 : 1; // 0x00
-        uint8_t flags : 1;
+        PacketFlags flags : 1;// TODO fit enum into a byte
     } header;
     ADE9000Data_t payload;
     uint32_t crc32;
 } Packet;
-
-enum PacketFlags
-{
-    ADE9000_DATA_PACKET,
-    TOGGLE_REALTIME_PACKET,
-    PING_PACKET,
-    REQUEST_DATA_PACKET
-};
 
 /**
  * Build a data packet from ADE9000 data
@@ -55,7 +55,7 @@ size_t buildDataPacket(Packet* packet, const ADE9000Data_t* data);
  * @param[in] flags the flags of the packet
  * @return the size of the packet, in bytes
  */
-size_t buildCommandPacket(Packet* packet, const uint8_t flags);
+size_t buildCommandPacket(Packet* packet, const PacketFlags flags);
 
 /**
  * Verifies that the packet is valid by checking its header and CRC

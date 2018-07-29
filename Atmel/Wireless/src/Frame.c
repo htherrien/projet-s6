@@ -4,6 +4,8 @@
  *
  ******************************************************************************/
 
+#include <string.h>
+
 #include "Frame.h"
 
 static const uint32_t CRC_32_IEEE_POLY = 0x04C11DB7;
@@ -20,14 +22,14 @@ size_t buildDataPacket(Packet* packet, const ADE9000Data_t* data)
     packet->header.h1 = FIRST_HEADER_BYTE;
     packet->header.h2 = SECOND_HEADER_BYTE;
     packet->header.h3 = THIRD_HEADER_BYTE;
-    packet->header.flags = PacketFlags.ADE9000_DATA_PACKET;
+    packet->header.flags = ADE9000_DATA_PACKET;
 
     // Fill payload
     packet->payload = *data;
 
     // Compute crc32 and store it in the packet
     packet->crc32 =
-        crc32(packet, sizeof(Packet) - sizeof(uint32_t), CRC_32_IEEE_POLY, 0);
+        crc32((uint8_t*)packet, sizeof(Packet) - sizeof(uint32_t), CRC_32_IEEE_POLY, 0);
 
     return sizeof(Packet);
 }
@@ -47,7 +49,7 @@ size_t buildCommandPacket(Packet* packet, const uint8_t flags)
 
     // Compute crc32 and store it in the packet
     packet->crc32 =
-        crc32(packet, sizeof(Packet) - sizeof(uint32_t), CRC_32_IEEE_POLY, 0);
+        crc32((uint8_t*)packet, sizeof(Packet) - sizeof(uint32_t), CRC_32_IEEE_POLY, 0);
 
     return sizeof(Packet);
 }
@@ -61,7 +63,7 @@ bool isPacketValid(const Packet* packet)
         return false;
     }
 
-    if(crc32((uint8_t*)packet, sizeof(Packet), CRC_32_IEEE_POLY, 0)) != 0)
+    if(crc32((uint8_t*)packet, sizeof(Packet), CRC_32_IEEE_POLY, 0) != 0)
 	{
 		return false;
 	}
