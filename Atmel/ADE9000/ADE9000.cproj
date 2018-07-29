@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>AnalyseurSansFil</AssemblyName>
-    <Name>libADE9000</Name>
+    <Name>ADE9000</Name>
     <RootNamespace>AnalyseurSansFil</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
