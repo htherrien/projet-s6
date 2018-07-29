@@ -27,7 +27,7 @@ typedef struct Packet
         uint8_t h3 : 1; // 0x00
         uint8_t flags : 1;
     } header;
-    ADE9000Data_t data;
+    ADE9000Data_t payload;
     uint32_t crc32;
 } Packet;
 
