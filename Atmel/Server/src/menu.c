@@ -78,7 +78,6 @@ uint8_t updateMenuUART(uint8_t data)
 			{
 				case COMMAND_TOGGLE_REALTIME :
 					command = COMMAND_TOGGLE_REALTIME;
-					Realtime = !Realtime;
 					showMenu();
 					break;
 				case MENU_VIEW_DATA : 
