@@ -86,8 +86,6 @@ bool isPacketValid(Packet* packet)
 
 bool storePacketIfValid(Packet* packet)
 {
-    // Precondition
-    assert(hasReceivedWireless());
 
     uint8_t rawDataSize = getWirelessSize();
     if(rawDataSize != sizeof(Packet))
