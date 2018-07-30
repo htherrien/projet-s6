@@ -4,7 +4,6 @@
  *
  ******************************************************************************/
 
-#include <assert.h>
 #include <string.h>
 
 #include "wireless.h"
@@ -86,7 +85,6 @@ bool isPacketValid(Packet* packet)
 
 bool storePacketIfValid(Packet* packet)
 {
-
     uint8_t rawDataSize = getWirelessSize();
     if(rawDataSize != sizeof(Packet))
     {
