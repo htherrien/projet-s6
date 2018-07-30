@@ -19,14 +19,19 @@
 #include "wireless.h"
 #include "Frame.h"
 
+#define SEND_DATA_TIMER TCNT1
+const static uint16_t SEND_DATA_TIMER_1SEC = 8000000 / 1024; // F_CPU/Prescaler
+#define ACK_TIMER TCNT3
+const static uint16_t SEND_DATA_TIMER_200MSEC = 8000000 / 1024 / 5;
+
 float i = 0.0;
 void APP_TaskHandler(void);
-void setupTimer1(void);
+void setupSendDataTimer(void);
 
-void setupTimer1(void)
+void setupSendDataTimer(void)
 {
     TCCR1B |= ((1 << CS10) | (1 << CS12)); // Set up timer at Fcpu/1024
-    TCNT1 = 0; // reset timer
+    SEND_DATA_TIMER = 0;                   // reset timer
 }
 
 void APP_TaskHandler(void)
@@ -62,9 +67,10 @@ void APP_TaskHandler(void)
     }
 
     // Send data in real time every second or if requested
-    if((sendDataRealtime && TCNT1 >= 8000) || sendDataOnce)
+    if((sendDataRealtime && SEND_DATA_TIMER >= SEND_DATA_TIMER_1SEC) ||
+       sendDataOnce)
     {
-        TCNT1 = 0; // reset timer
+        SEND_DATA_TIMER = 0; // reset timer
         ADE9000Data_t ade9000Data;
         ade9000Data.pf = i;       // getPF();
         ade9000Data.thd = 2 * i;  // getTHD();
@@ -91,6 +97,7 @@ int main(void)
     SpiInitMaster();
     ADE9000Setup();
     SYS_Init();
+    setupSendDataTimer();
 
     for(;;)
     {
