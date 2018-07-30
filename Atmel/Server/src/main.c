@@ -45,22 +45,26 @@ void APP_TaskHandler(void)
 	}
 	
 	
-	Packet rxPacket;
-	if(hasReceivedWireless() && storePacketIfValid(&rxPacket))
+	
+	if(hasReceivedWireless())
 	{
-		PacketFlags flags = rxPacket.header.flags;
-		switch(flags)
-		{
-			case ADE9000_DATA_PACKET:
-				ADE9000Data = rxPacket.payload;
-				updateMenuWireless();
-				break;
-			case PING_PACKET:
-				sendPong = 1;
-			default:
-				break;
-		}
 		resetReceivedWireless();
+		Packet rxPacket;
+		if (storePacketIfValid(&rxPacket))
+		{
+			PacketFlags flags = rxPacket.header.flags;
+			switch(flags)
+			{
+				case ADE9000_DATA_PACKET:
+					ADE9000Data = rxPacket.payload;
+					updateMenuWireless();
+					break;
+				case PING_PACKET:
+					sendPong = 1;
+				default:
+					break;
+			}
+		}
 	}
 	
 	

@@ -39,12 +39,13 @@ void UARTWrite(uint8_t data)
 
 void UARTInit(void)
 {
-	//baud rate register = Fcpu / (16*baud rate - 1)
+	//baud rate register = Fcpu / (8*baud rate - 1)
 	//baud rate = 9600bps
-	UBRR1H = 0x00;
-	UBRR1L = 53;
 	
-	UCSR1A = 0x00;
+	UBRR1H = 0x00;
+	UBRR1L = 8;
+	
+	UCSR1A = 0x02; //Double speed transmission
 	UCSR1B = 0x18; //receiver, transmitter enable, no parity
 	UCSR1C = 0x06; //8-bits per character, 1 stop bit
 }
