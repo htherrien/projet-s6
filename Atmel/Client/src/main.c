@@ -25,9 +25,11 @@ void APP_TaskHandler(void)
     int sendDataOnce = 0;
     int sendPong = 0;
 
-
+    if(hasReceivedWireless())
+    {
         Packet rxPacket;
-        if(hasReceivedWireless() && storePacketIfValid(&rxPacket))
+        resetReceivedWireless();
+        if(storePacketIfValid(&rxPacket))
         {
             PacketFlags flags = rxPacket.header.flags;
             switch(flags)
@@ -36,29 +38,30 @@ void APP_TaskHandler(void)
                     break;
                 case TOGGLE_REALTIME_PACKET:
                     sendDataRealtime ^= 0x1;
-					break;
+                    break;
                 case REQUEST_DATA_PACKET:
                     sendDataOnce = 1;
-					break;
+                    break;
                 case PING_PACKET:
                     sendPong = 1;
-					break;
+                    break;
                 default:
                     break;
             }
-            resetReceivedWireless();
         }
+    }
 
-	// Send data
+    // Send data
     if(sendDataRealtime || sendDataOnce)
     {
         sendDataOnce = 0;
         ADE9000Data_t ade9000Data;
-        ade9000Data.pf = i;//getPF();
-        ade9000Data.thd = 2*i;//getTHD();
-        ade9000Data.vRms = 3*i;//getVrms();
-        ade9000Data.iRms = 4*i;//getIrms();
-		if(i++ > 10) i=0; //TODO : TO BE REMOVED WHEN ADE9000 CIRCUIT IS THERE
+        ade9000Data.pf = i;       // getPF();
+        ade9000Data.thd = 2 * i;  // getTHD();
+        ade9000Data.vRms = 3 * i; // getVrms();
+        ade9000Data.iRms = 4 * i; // getIrms();
+        if(i++ > 10)
+            i = 0; // TODO : TO BE REMOVED WHEN ADE9000 CIRCUIT IS THERE
         Packet txPacket;
         write_Wireless((uint8_t*)&txPacket,
                        buildDataPacket(&txPacket, &ade9000Data));
@@ -66,10 +69,10 @@ void APP_TaskHandler(void)
 
     if(sendPong)
     {
+        sendPong = 0;
         Packet txPacket;
         write_Wireless((uint8_t*)&txPacket,
                        buildCommandPacket(&txPacket, PING_PACKET));
-		sendPong = 0;
     }
 }
 
