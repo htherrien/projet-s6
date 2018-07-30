@@ -25,6 +25,7 @@ const static uint16_t SEND_DATA_TIMER_1SEC = 8000000 / 1024; // F_CPU/Prescaler
 const static uint16_t SEND_DATA_TIMER_200MSEC = 8000000 / 1024 / 5;
 
 float i = 0.0;
+uint8_t WaitingForAck = 0;
 void APP_TaskHandler(void);
 void setupSendDataTimer(void);
 
@@ -38,7 +39,6 @@ void APP_TaskHandler(void)
 {
     static int sendDataRealtime = 0; // Send data to server flag
     int sendDataOnce = 0;
-    int sendPong = 0;
 
     if(hasReceivedWireless())
     {
@@ -53,13 +53,16 @@ void APP_TaskHandler(void)
                     break;
                 case TOGGLE_REALTIME_PACKET:
                     sendDataRealtime ^= 0x1;
+					sendCommand(ACK_PACKET);
                     break;
                 case REQUEST_DATA_PACKET:
                     sendDataOnce = 1;
                     break;
                 case PING_PACKET:
-                    sendPong = 1;
+                    sendCommand(PING_PACKET);
                     break;
+				case ACK_PACKET:
+					WaitingForAck = 0;
                 default:
                     break;
             }
@@ -67,10 +70,11 @@ void APP_TaskHandler(void)
     }
 
     // Send data in real time every second or if requested
-    if((sendDataRealtime && SEND_DATA_TIMER >= SEND_DATA_TIMER_1SEC) ||
-       sendDataOnce)
+    if(((sendDataRealtime && SEND_DATA_TIMER >= SEND_DATA_TIMER_1SEC) ||
+		sendDataOnce) ||
+	    (WaitingForAck && ACK_TIMER >= SEND_DATA_TIMER_200MSEC))
     {
-        SEND_DATA_TIMER = 0; // reset timer
+		WaitingForAck = 1; //We expect an acknowledge for a data packet
         ADE9000Data_t ade9000Data;
         ade9000Data.pf = i;       // getPF();
         ade9000Data.thd = 2 * i;  // getTHD();
@@ -81,15 +85,10 @@ void APP_TaskHandler(void)
         Packet txPacket;
         write_Wireless((uint8_t*)&txPacket,
                        buildDataPacket(&txPacket, &ade9000Data));
+		SEND_DATA_TIMER = 0; // reset timer
+		ACK_TIMER = 0;
     }
 
-    if(sendPong)
-    {
-        sendPong = 0;
-        Packet txPacket;
-        write_Wireless((uint8_t*)&txPacket,
-                       buildCommandPacket(&txPacket, PING_PACKET));
-    }
 }
 
 int main(void)
