@@ -12,6 +12,6 @@ void setupWirelessTimers(void);
 
 void resetWirelessTimers(void);
 
-bool checkSendDataTimer(void);
+bool hasSendDataTimerElapsed(void);
 
-bool checkAckTimer(void);
+bool hasAckTimerElapsed(void);

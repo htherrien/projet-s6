@@ -24,12 +24,13 @@ void resetWirelessTimers(void)
     TIFR1 |= (1 << OCF1A) | (1 << OCF1B);
 }
 
-bool checkSendDataTimer(void)
+bool hasSendDataTimerElapsed(void)
 {
     return TIFR1 & (1 << OCF1A);
 }
 
-bool checkAckTimer(void)
+
+bool hasAckTimerElapsed(void)
 {
     return TIFR1 & (1 << OCF1B);
 }
