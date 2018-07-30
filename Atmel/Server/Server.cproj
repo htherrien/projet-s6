@@ -71,7 +71,7 @@
       </framework-data>
     </AsfFrameworkConfig>
     <avrtool>com.atmel.avrdbg.tool.edbg</avrtool>
-    <avrtoolserialnumber>ATML1784031800001208</avrtoolserialnumber>
+    <avrtoolserialnumber>ATML1784031800000869</avrtoolserialnumber>
     <avrdeviceexpectedsignature>0x1EA802</avrdeviceexpectedsignature>
     <custom>
       <ToolOptions>
@@ -103,7 +103,7 @@
         <InterfaceName>JTAG</InterfaceName>
       </ToolOptions>
       <ToolType>com.atmel.avrdbg.tool.edbg</ToolType>
-      <ToolNumber>ATML1784031800001208</ToolNumber>
+      <ToolNumber>ATML1784031800000869</ToolNumber>
       <ToolName>EDBG</ToolName>
     </com_atmel_avrdbg_tool_edbg>
     <avrtoolinterfaceclock>220000</avrtoolinterfaceclock>
