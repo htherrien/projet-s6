@@ -16,6 +16,8 @@
 
 #include "wireless.h"
 #include "Frame.h"
+
+float i = 0.0;
 void APP_TaskHandler(void);
 void APP_TaskHandler(void)
 {
@@ -34,10 +36,13 @@ void APP_TaskHandler(void)
                     break;
                 case TOGGLE_REALTIME_PACKET:
                     sendDataRealtime ^= 0x1;
+					break;
                 case REQUEST_DATA_PACKET:
                     sendDataOnce = 1;
+					break;
                 case PING_PACKET:
                     sendPong = 1;
+					break;
                 default:
                     break;
             }
@@ -49,10 +54,11 @@ void APP_TaskHandler(void)
     {
         sendDataOnce = 0;
         ADE9000Data_t ade9000Data;
-        ade9000Data.pf = getPF();
-        ade9000Data.thd = getTHD();
-        ade9000Data.vRms = getVrms();
-        ade9000Data.iRms = getIrms();
+        ade9000Data.pf = i;//getPF();
+        ade9000Data.thd = 2*i;//getTHD();
+        ade9000Data.vRms = 3*i;//getVrms();
+        ade9000Data.iRms = 4*i;//getIrms();
+		if(i++ > 10) i=0; //TODO : TO BE REMOVED WHEN ADE9000 CIRCUIT IS THERE
         Packet txPacket;
         write_Wireless((uint8_t*)&txPacket,
                        buildDataPacket(&txPacket, &ade9000Data));
@@ -63,6 +69,7 @@ void APP_TaskHandler(void)
         Packet txPacket;
         write_Wireless((uint8_t*)&txPacket,
                        buildCommandPacket(&txPacket, PING_PACKET));
+		sendPong = 0;
     }
 }
 

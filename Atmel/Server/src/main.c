@@ -20,25 +20,55 @@ struct ADE9000Data_t ADE9000Data;
 
 void APP_TaskHandler(void)
 {
-	uint8_t receivedUART = UARTRead();
 	
+	int sendPong = 0;
+	
+	//If we received something from UART, interact with menu
+	uint8_t receivedUART = UARTRead();
 	if(receivedUART)		//est-ce qu'un caractere a été recu par l'UART?
 	{
 		uint8_t command = updateMenuUART(receivedUART);
-		if (command)
+		//We verify if the menu interaction triggers a command that has to be sent to the ADE9000
+		switch (command)
 		{
-			
+			case COMMAND_REQUEST:
+				sendCommand(REQUEST_DATA_PACKET);
+				break;
+				
+			case COMMAND_TOGGLE_REALTIME:
+				sendCommand(TOGGLE_REALTIME_PACKET);
+				break;
+				
+			default:
+				break;
 		}
 	}
-	if (hasReceivedWireless())
+	
+	
+	Packet rxPacket;
+	if(hasReceivedWireless() && storePacketIfValid(&rxPacket))
 	{
-		uint8_t size = getWirelessSize();
-		for (uint8_t i = 0; i < size; i++)
+		PacketFlags flags = rxPacket.header.flags;
+		switch(flags)
 		{
-			UARTWrite(getWirelessData()[i]);
+			case ADE9000_DATA_PACKET:
+				ADE9000Data = rxPacket.payload;
+				updateMenuWireless();
+				break;
+			case PING_PACKET:
+				sendPong = 1;
+			default:
+				break;
 		}
-		
 		resetReceivedWireless();
+	}
+	
+	
+	if(sendPong)
+	{
+		Packet txPacket;
+		write_Wireless((uint8_t*)&txPacket,
+						buildCommandPacket(&txPacket, PING_PACKET));
 	}
 }
 int main(void)

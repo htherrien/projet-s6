@@ -75,8 +75,8 @@ bool isPacketValid(Packet* packet)
     {
         return false;
     }
-
-    if(crc32((uint8_t*)packet, sizeof(Packet), CRC_32_IEEE_POLY, 0) != 0)
+	uint32_t test;
+    if( test = crc32((uint8_t*)packet, sizeof(Packet), CRC_32_IEEE_POLY, 0) != 0)
     {
         return false;
     }
