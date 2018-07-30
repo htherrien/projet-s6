@@ -10,7 +10,7 @@
 
 void setupWirelessTimers(void);
 
-void resetWirelessTimers(void)
+void resetWirelessTimers(void);
 
 bool checkSendDataTimer(void);
 
