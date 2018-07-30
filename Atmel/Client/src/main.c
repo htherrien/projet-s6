@@ -11,6 +11,8 @@
 
 #include <string.h>
 
+#include "avr/io.h"
+
 #include "SPI.h"
 #include "ADE9000/Commands.h"
 
@@ -19,6 +21,14 @@
 
 float i = 0.0;
 void APP_TaskHandler(void);
+void setupTimer1(void);
+
+void setupTimer1(void)
+{
+    TCCR1B |= ((1 << CS10) | (1 << CS12)); // Set up timer at Fcpu/1024
+    TCNT1 = 0; // reset timer
+}
+
 void APP_TaskHandler(void)
 {
     static int sendDataRealtime = 0; // Send data to server flag
@@ -51,10 +61,10 @@ void APP_TaskHandler(void)
         }
     }
 
-    // Send data
-    if(sendDataRealtime || sendDataOnce)
+    // Send data in real time every second or if requested
+    if((sendDataRealtime && TCNT1 >= 8000) || sendDataOnce)
     {
-        sendDataOnce = 0;
+        TCNT1 = 0; // reset timer
         ADE9000Data_t ade9000Data;
         ade9000Data.pf = i;       // getPF();
         ade9000Data.thd = 2 * i;  // getTHD();
