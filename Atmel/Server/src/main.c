@@ -17,12 +17,11 @@
 #include "wireless.h"
 #include "menu.h"
 #include "Frame.h"
+#include "Timers.h"
 
 
 #define MAX_COMMANDS_IN_PILE 20
-#define ACK_TIMER TCNT1
 
-static const int TIMEOUT_ACKNOWLEDGE = 8000000 / 1024 / 5;
 struct ADE9000Data_t ADE9000Data;
 uint8_t Commands[MAX_COMMANDS_IN_PILE];
 uint8_t CommandIndexEnd = 0;
@@ -30,13 +29,7 @@ uint8_t CommandIndexStart = 0;
 uint8_t WaitingForAck = 0;
 uint8_t WaitingForData = 0;
 
-extern uint8_t Realtime;
-
-void setupSendDataTimer(void)
-{
-	TCCR1B |= ((1 << CS10) | (1 << CS12)); // Set up timer at Fcpu/1024
-	ACK_TIMER = 0;                   // reset timer
-}
+extern uint8_t Realtime; //Used in the menu
 
 void APP_TaskHandler(void)
 {
@@ -70,7 +63,6 @@ void APP_TaskHandler(void)
 		Packet rxPacket;
 		if (storePacketIfValid(&rxPacket))
 		{
-			writeStrUART("\r\n\r\nPacket Received : RSSI = %i", getWirelessRSSI());
 			PacketFlags flags = rxPacket.header.flags;
 			switch(flags)
 			{
@@ -85,21 +77,23 @@ void APP_TaskHandler(void)
 					}
 					break;
 				case PING_PACKET:
-					sendPong = 1;
+					sendCommand(PING_PACKET);
 				case ACK_PACKET:
 					WaitingForAck = 0;
 					if (Commands[CommandIndexStart] == COMMAND_TOGGLE_REALTIME)
 					{
 						Commands[CommandIndexStart++] = 0;
 						Realtime = !Realtime;
+						updateMenuWireless();
 					}
 				default:
 					break;
 			}
+			writeStrUART("\r\n\r\nPacket Received : RSSI = %i", getWirelessRSSI());
 		}
 	}
 	
-	if ((!WaitingForAck && !WaitingForData) || (ACK_TIMER >= TIMEOUT_ACKNOWLEDGE && (WaitingForAck || WaitingForData)))
+	if ((!WaitingForAck && !WaitingForData) || (hasAckTimerElapsed() && (WaitingForAck || WaitingForData)))
 	{
 		if (Commands[CommandIndexStart])
 		{
@@ -108,12 +102,12 @@ void APP_TaskHandler(void)
 				case COMMAND_REQUEST:
 					sendCommand(REQUEST_DATA_PACKET);
 					WaitingForData = 1;
-					ACK_TIMER = 0;
+					resetWirelessTimers();
 					break;
 				case COMMAND_TOGGLE_REALTIME:
 					sendCommand(TOGGLE_REALTIME_PACKET);
 					WaitingForAck = 1;
-					ACK_TIMER = 0;
+					resetWirelessTimers();
 					break;
 				default: //Invalid command is ignored and skipped
 					Commands[CommandIndexStart++] = 0;
@@ -122,21 +116,13 @@ void APP_TaskHandler(void)
 		}
 	}
 	
-	
-	
-	if(sendPong)
-	{
-		Packet txPacket;
-		write_Wireless((uint8_t*)&txPacket,
-						buildCommandPacket(&txPacket, PING_PACKET));
-	}
 }
 int main(void)
 {
 	UARTInit();
 	SYS_Init();
 	showMenu();
-	setupSendDataTimer();
+	setupWirelessTimers();
 	memset(Commands, 0, MAX_COMMANDS_IN_PILE);
 	for(;;)
 	{
