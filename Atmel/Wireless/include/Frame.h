@@ -23,7 +23,8 @@ typedef enum PacketFlags
     ADE9000_DATA_PACKET = 1,
     TOGGLE_REALTIME_PACKET,
     PING_PACKET,
-    REQUEST_DATA_PACKET
+    REQUEST_DATA_PACKET,
+	ACK_PACKET
 } PacketFlags;
 
 typedef struct Packet
