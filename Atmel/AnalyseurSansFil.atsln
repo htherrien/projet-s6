@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ADE9000", "ADE9000\ADE9000.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Wireless", "Wireless\Wireless.cproj", "{DDF086A5-098C-4886-A471-65DB11F931A1}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Client", "Client\Client.cproj", "{259EC3B7-E908-4164-85ED-0406C06ACD14}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Server", "Server\Server.cproj", "{9B949493-00E9-4F03-A9AF-C73BDE91F331}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = Release|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = Release|AVR
+		{DDF086A5-098C-4886-A471-65DB11F931A1}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DDF086A5-098C-4886-A471-65DB11F931A1}.Debug|AVR.Build.0 = Debug|AVR
+		{DDF086A5-098C-4886-A471-65DB11F931A1}.Release|AVR.ActiveCfg = Release|AVR
+		{DDF086A5-098C-4886-A471-65DB11F931A1}.Release|AVR.Build.0 = Release|AVR
+		{259EC3B7-E908-4164-85ED-0406C06ACD14}.Debug|AVR.ActiveCfg = Debug|AVR
+		{259EC3B7-E908-4164-85ED-0406C06ACD14}.Debug|AVR.Build.0 = Debug|AVR
+		{259EC3B7-E908-4164-85ED-0406C06ACD14}.Release|AVR.ActiveCfg = Release|AVR
+		{259EC3B7-E908-4164-85ED-0406C06ACD14}.Release|AVR.Build.0 = Release|AVR
+		{9B949493-00E9-4F03-A9AF-C73BDE91F331}.Debug|AVR.ActiveCfg = Debug|AVR
+		{9B949493-00E9-4F03-A9AF-C73BDE91F331}.Debug|AVR.Build.0 = Debug|AVR
+		{9B949493-00E9-4F03-A9AF-C73BDE91F331}.Release|AVR.ActiveCfg = Release|AVR
+		{9B949493-00E9-4F03-A9AF-C73BDE91F331}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -57,3 +57,13 @@ dkms.conf
 
 # OS generated files
 *.ini
+
+# Atmel / Visual Studio
+*.suo
+*.atsuo
+*.componentinfo.xml
+
+# Build
+[Dd]ebug/
+[Rr]elease/
+[Dd]oxygen
