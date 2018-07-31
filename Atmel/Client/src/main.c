@@ -52,6 +52,7 @@ void APP_TaskHandler(void)
                     break;
 				case ACK_PACKET:
 					WaitingForAck = 0;
+                    break;
                 default:
                     break;
             }
@@ -65,10 +66,10 @@ void APP_TaskHandler(void)
     {
 		WaitingForAck = 1; //We expect an acknowledge for a data packet
         ADE9000Data_t ade9000Data;
-        ade9000Data.pf = i;       // getPF();
-        ade9000Data.thd = 2 * i;  // getTHD();
-        ade9000Data.vRms = 3 * i; // getVrms();
-        ade9000Data.iRms = 4 * i; // getIrms();
+        ade9000Data.pf =  getPF();
+        ade9000Data.thd =  getTHD();
+        ade9000Data.vRms =  getVrms();
+        ade9000Data.iRms =  getIrms();
         if(i++ > 10)
             i = 0; // TODO : TO BE REMOVED WHEN ADE9000 CIRCUIT IS THERE
         Packet txPacket;

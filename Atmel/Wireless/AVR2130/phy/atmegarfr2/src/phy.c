@@ -97,7 +97,10 @@ void PHY_Init(void)
   TRX_CTRL_2_REG_s.rxSafeMode = 1; //do not forget to release the buffer before TX or after copying receive buffer
   //other TRX_CTRL_2_REG bits: OQPSK_DATA_RATE default to 250kbps
 
-  //ANT_CTRL: antenna diversity OFF by default
+  // Antenna control
+  ANT_DIV_REG_s.antDivEn = 0; // disable antenna diversity
+  ANT_DIV_REG_s.antCtrl = 2; // select antenna 2
+  ANT_DIV_REG_s.antExtSwEn = 1; // enable manual antenna switch
 
   TRX_CTRL_1_REG_s.txAutoCrcOn = 0; //disable automatic FCS generation for TX operations
 
