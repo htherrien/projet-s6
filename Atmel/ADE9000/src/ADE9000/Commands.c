@@ -52,18 +52,18 @@ float getPF(void)
 
 float getVrms(void)
 {
-    static const float V_NOMINAL = 120.0f; // Multiplication factor 1V to 120V
-    static const float V_CORR = 1.188f; // Normalizing factor for the 10uf cap
-    return (float)ADE9000Read32(ADDR_AVRMS) / FULL_SCALE_RMS * V_NOMINAL *
-           V_CORR;
+    const float V_NOMINAL = 120.0f; // Multiplication factor 1V to 120V
+    const float V_CORR = 1.188f;    // Normalizing factor for the 10uf cap
+    const float rawRead = (float)ADE9000Read32(ADDR_AVRMS);
+    return rawRead / FULL_SCALE_RMS * V_NOMINAL * V_CORR;
 }
 
 float getIrms(void)
 {
-    static const float I_NOMINAL = 5.0f; // Multiplication factor 1A to 5A
-    static const float I_CORR = 1.1f;    // Normalizing factor for the 10uF cap
-    return (float)ADE9000Read32(ADDR_AIRMS) / FULL_SCALE_RMS * I_NOMINAL *
-           I_CORR;
+    const float I_NOMINAL = 5.0f; // Multiplication factor 1A to 5A
+    const float I_CORR = 1.1f;    // Normalizing factor for the 10uF cap
+    const float rawRead = (float)ADE9000Read32(ADDR_AIRMS);
+    return rawRead / FULL_SCALE_RMS * I_NOMINAL * I_CORR;
 }
 
 void ADE9000Write(uint16_t address, size_t n, const uint8_t* data)
@@ -141,6 +141,10 @@ uint32_t ADE9000Read32(uint16_t address)
 
 void ADE9000Setup(void)
 {
+    // Verify the connection to the ADE9000
+    // uint32_t partID = ADE9000Read32(ADDR_PART_ID);
+    // assert((partID >> 20) & 1);
+
     // Configure the ADE9000 for 60Hz
     ADE9000Write16(ADDR_ACCMODE, ADE9000Read16(ADDR_ACCMODE) | 0x0100);
     // Configure nominal VLEVEL to 1Vp
