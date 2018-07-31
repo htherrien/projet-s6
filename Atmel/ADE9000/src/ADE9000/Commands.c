@@ -42,12 +42,15 @@ static const float FULL_SCALE_RMS = 52702092.0f;
 
 float getTHD(void)
 {
-    return (float)ADE9000Read32(ADDR_AVTHD) * CONV_PF_THD * 100.0f;
+    const float rawRead = (float)ADE9000Read32(ADDR_AVTHD);
+    return rawRead * CONV_PF_THD * 100.0f;
 }
 
 float getPF(void)
 {
-    return (float)ADE9000Read32(ADDR_APF) * CONV_PF_THD;
+    // cast to int because PF is in signed Q5.27
+    const int32_t rawRead = (int32_t)ADE9000Read32(ADDR_APF);
+    return (float)rawRead * CONV_PF_THD;
 }
 
 float getVrms(void)
