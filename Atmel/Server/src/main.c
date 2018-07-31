@@ -20,7 +20,7 @@
 #include "Timers.h"
 
 
-#define MAX_COMMANDS_IN_PILE 20
+#define MAX_COMMANDS_IN_PILE 2
 
 struct ADE9000Data_t ADE9000Data;
 uint8_t Commands[MAX_COMMANDS_IN_PILE];
@@ -51,7 +51,7 @@ void APP_TaskHandler(void)
 			else
 			{
 				Commands[CommandIndexEnd] = command;
-				if(CommandIndexEnd++ >= MAX_COMMANDS_IN_PILE)
+				if(++CommandIndexEnd >= MAX_COMMANDS_IN_PILE)
 					CommandIndexEnd = 0;
 			}
 		}
@@ -73,7 +73,11 @@ void APP_TaskHandler(void)
 					sendCommand(ACK_PACKET);
 					if (Commands[CommandIndexStart] == COMMAND_REQUEST)
 					{
-						Commands[CommandIndexStart++] = 0;
+						Commands[CommandIndexStart] = 0;
+						if (++CommandIndexStart >= MAX_COMMANDS_IN_PILE)
+						{
+							CommandIndexStart = 0;
+						}
 					}
 					break;
 				case PING_PACKET:
@@ -82,14 +86,18 @@ void APP_TaskHandler(void)
 					WaitingForAck = 0;
 					if (Commands[CommandIndexStart] == COMMAND_TOGGLE_REALTIME)
 					{
-						Commands[CommandIndexStart++] = 0;
+						Commands[CommandIndexStart] = 0;
+						if (++CommandIndexStart >= MAX_COMMANDS_IN_PILE)
+						{
+							CommandIndexStart = 0;
+						}
 						Realtime = !Realtime;
 						updateMenuWireless();
 					}
 				default:
 					break;
 			}
-			writeStrUART("\r\n\r\nPacket Received : RSSI = %i", getWirelessRSSI());
+			displayRSSI(getWirelessRSSI());
 		}
 	}
 	
@@ -110,7 +118,11 @@ void APP_TaskHandler(void)
 					resetWirelessTimers();
 					break;
 				default: //Invalid command is ignored and skipped
-					Commands[CommandIndexStart++] = 0;
+					Commands[CommandIndexStart] = 0;
+					if (++CommandIndexStart >= MAX_COMMANDS_IN_PILE)
+					{
+						CommandIndexStart = 0;
+					}
 					break;
 			}
 		}

@@ -29,3 +29,4 @@ const uint8_t* displayRealtimeStatus(void);
 void writeMeasurements(uint8_t thd,uint8_t pf, uint8_t irms, uint8_t vrms);
 void clearDisplay(void);
 void updateMenuWireless(void);
+void displayRSSI(uint8_t rssi);

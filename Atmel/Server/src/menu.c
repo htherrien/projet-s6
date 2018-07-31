@@ -14,9 +14,11 @@ extern struct ADE9000Data_t ADE9000Data;
 uint8_t MenuState = MENU_MAIN;
 uint8_t Realtime = 0;
 uint8_t Requested = 0;
+uint8_t PacketReceivedInThisMenu = 0;
 
 void showMenu(void)
 {
+	PacketReceivedInThisMenu = 0;
 	clearDisplay();
 	switch(MenuState)
 	{
@@ -165,6 +167,7 @@ void updateMenuWireless(void)
 	switch(MenuState)
 	{
 		case MENU_MAIN:
+			showMenu();
 		break;
 		
 		case MENU_VIEW_DATA :
@@ -180,4 +183,21 @@ void updateMenuWireless(void)
 		break;
 		
 	}
+}
+
+void displayRSSI(uint8_t rssi)
+{
+	if (PacketReceivedInThisMenu)
+	{
+		UARTWrite(27); //Escape sequence start
+		writeStrUART("[2K"); //CSI sequence clear line
+		writeStrUART("\r"); //Return to start of line
+	}
+	else
+	{
+		writeStrUART("\r\n\r\n");
+	}
+	writeStrUART("Packet Received : RSSI = %i", rssi);
+	PacketReceivedInThisMenu = 1;
+	
 }
