@@ -10,6 +10,8 @@
 
 #define PF_CMD 0x2168
 #define THD_CMD 0x2178
+#define AV_CMD 0x20B8
+#define AI_CMD 0x20A8
 #define AVRMS_CMD 0x20D8
 #define AIRMS_CMD 0x20C8
 #define RUN_CMD 0x4808  //pour enable le DSP
@@ -23,21 +25,31 @@
 
 #define CONFIG0_CMD_READ  0x0608
 #define CONFIG0_CMD_WRITE 0x0600
+#define ZX_LP_SEL_CMD_READ  0x49A8 //pour set la mesure de periode sur 1 seule phase
+#define ZX_LP_SEL_CMD_WRITE 0x49A0  
+#define WFB_CFG_READ 0x4A08 // Registre de config du waveform buffer
+#define WFB_CFG_WRITE 0x4A00 
+#define MASK0_CFG_READ 0x4058 // Registre des masques des interruptions
+#define MASK0_CFG_WRITE 0x4050
+#define CONFIG1_CFG_READ 0x4818 // Configuration générale
+#define CONFIG1_CFG_WRITE 0x4810
+
 #define STATUS0_CMD 0x4028
-#define ZX_LP_SEL_CMD_WRITE 0x49A0  //pour set la mesure de periode sur 1 seule phase
-#define ZX_LP_SEL_CMD_READ  0x49A8
 
 #define CONV_PF_THD 0.000000007450580597
-#define FULL_SCALE_I_V  52702092
+#define FULL_SCALE_I_V_RMS  52702092 // Datasheet p.28
+#define FULL_SCALE_I_V  74532013 // Datasheet p.31
 #define V_NOMINAL 120
 #define V_CORR  1.188 //facteur correction pour que la "tension nominal" soit lu avec le condo de 10uF
 #define I_NOMINAL 5
 #define I_CORR  1.1 //facteur correction pour que le "courant nominal" soit lu avec le condo de 10uF
 
-float THD=0;  //en %
-float PF=0;
-float I=0;
-float V=0;
+float THD=0.0f;  //en %
+float PF=0.0f;
+float I=0.0f;
+float V=0.0f;
+float IRMS=0.0f;
+float VRMS=0.0f;
 
 //Les constantes et variables pour le arduino
 #define chipSelect 6
@@ -51,9 +63,15 @@ void afficher_resultats();  //propre au arduino
 unsigned long lecture_registre(short nb_bytes,unsigned short cmd_hdr); //dequoi de similaire pour notre application Atmel
 void enable_dsp();  //enable le dsp (RUN=1)
 void ecriture_registre(short nb_bytes,unsigned short cmd_hdr,unsigned long val);
+void lire_pf();
+void lire_thd();
+void lire_av();
+void lire_ai();
+void lire_avrms();
+void lire_airms();
 
 void setup() {
-  Serial.begin(9600); //pour la console avec arduino
+  Serial.begin(115200); //pour la console avec arduino
   
   delay(500); //permet le setting des registres et du crystal (50ms aurait été plus précis mais moins safe) voir p.7 userguide
   
@@ -71,37 +89,45 @@ void setup() {
   ecriture_registre(2,EP_CFG_CMD_WRITE,(temp16|0xE000));
 
   temp16=lecture_registre(2,ZX_LP_SEL_CMD_READ);  //set la phase A comme référence pour la mesure de la période
-  ecriture_registre(2,ZX_LP_SEL_CMD_WRITE,(temp16&&0xFFC0));
+  ecriture_registre(2,ZX_LP_SEL_CMD_WRITE,(temp16&0xFFC0));
   
   enable_dsp(); //dernière étape de la config du ADE9000
 
   temp16=lecture_registre(2,EP_CFG_CMD_READ);//enable power accumulation (ne pas faire en même temps que le no-load timer)
   ecriture_registre(2,EP_CFG_CMD_WRITE,(temp16|0x0001));
-  
+
+  temp16=lecture_registre(2, WFB_CFG_READ);
+  temp16 |= 0x300; // WF_SRC = 11 // 8ksp/s avec dsp
+  temp16 &= ~0x20; // WF_CAP_SEL = 0 // 128 pts/cycle
+  temp16 |= 0x10; // WF_CAP_EN = 0 // Pas de capture
+  ecriture_registre(2, WFB_CFG_WRITE, temp16); 
+
+  temp=lecture_registre(4, MASK0_CFG_READ);
+  temp |= 0x8000; // Activer l'interruption DREADY lorsqu'il y a un sample
+  ecriture_registre(4, MASK0_CFG_WRITE, temp);
+
+  temp16 = lecture_registre(2, CONFIG1_CFG_READ);
+  temp16 |= 0xC; // CF4_CFG = 11 // CF4 est connecté à DREADY 
+  ecriture_registre(2, CONFIG1_CFG_WRITE, temp16);
+    
+  //attachInterrupt(digitalPinToInterrupt(2), afficher_VI, FALLING);
+}
+
+void afficher_VI()
+{
+  lire_av();
+  lire_ai();
+  Serial.print(V,3);
+  Serial.print(' ');
+  Serial.print(I,3);
+  Serial.print('\n');
 }
 
 void loop() {
 
-  delay(50);
-  if (millis()>last_millis+TIMER_LECTURE) //vérification qui s'apparente à un Timer pour un environnement autre que Arduino
-  {
-    temp=lecture_registre(4,PF_CMD);
-    PF=(float)temp * CONV_PF_THD;
-    temp=lecture_registre(4,THD_CMD);
-    THD=(float)temp * 100 * CONV_PF_THD;
-    
-    temp=lecture_registre(4,AVRMS_CMD); //lecture tension
-    V=((float)temp/(float)FULL_SCALE_I_V)*V_NOMINAL*V_CORR;
-    
-    temp=lecture_registre(4,AIRMS_CMD); //lecture courant
-    I=((float)temp/(float)FULL_SCALE_I_V)*I_NOMINAL*I_CORR;
-    
-    afficher_resultats();
-    last_millis=millis();
-
-    
-  }
+  
 }
+
 void enable_dsp()// (RUN=1)
 {
   digitalWrite(chipSelect,LOW);
@@ -113,6 +139,7 @@ void enable_dsp()// (RUN=1)
   SPI.transfer(0x01); //enable DSP for mesurement
   digitalWrite(chipSelect,HIGH);
 }
+
 void ecriture_registre(short nb_bytes,unsigned short cmd_hdr,unsigned long val)
 {
   // cmd_hdr: 16bits non signé incluant le bit3=0 pour le write
@@ -176,6 +203,44 @@ unsigned long lecture_registre(short nb_bytes,unsigned short cmd_hdr)  //faire q
   return result;
 }
 
+void lire_pf()
+{
+    temp=lecture_registre(4,PF_CMD);
+    PF=(float)temp * CONV_PF_THD;
+}
+
+void lire_thd()
+{
+    temp=lecture_registre(4,THD_CMD);
+    THD=(float)temp * 100 * CONV_PF_THD;
+}
+
+void lire_avrms()
+{
+    temp=lecture_registre(4,AVRMS_CMD); //lecture tension
+    VRMS=((float)temp/(float)FULL_SCALE_I_V_RMS)*V_NOMINAL*V_CORR;
+}
+
+void lire_airms()
+{
+    temp=lecture_registre(4,AIRMS_CMD); //lecture courant
+    IRMS=((float)temp/(float)FULL_SCALE_I_V_RMS)*I_NOMINAL*I_CORR;
+}
+
+void lire_av()
+{
+    // lecture dans un entier signé
+    long temp = lecture_registre(4,AV_CMD); //lecture tension
+    V = ((float)temp/(float)FULL_SCALE_I_V)*V_NOMINAL*V_CORR;
+}
+
+void lire_ai()
+{
+    // lecture dans un entier signé
+    long temp = lecture_registre(4,AI_CMD); //lecture courant
+    I = ((float)temp/(float)FULL_SCALE_I_V)*I_NOMINAL*I_CORR;
+}
+
 void afficher_resultats() //propre au arduino
 {
   Serial.print('\n');
@@ -186,12 +251,12 @@ void afficher_resultats() //propre au arduino
   Serial.print("Le facteur de puissance: ");
   Serial.print(PF,3);
   Serial.print('\n');
-  Serial.print("La tension: ");
-  Serial.print(V,3);
+  Serial.print("La tension RMS: ");
+  Serial.print(VRMS,3);
   Serial.print(" V");
   Serial.print('\n');
-  Serial.print("Le courant: ");
-  Serial.print(I,3);
+  Serial.print("Le courant RMS: ");
+  Serial.print(IRMS,3);
   Serial.print(" A");
   Serial.print('\n');
   
