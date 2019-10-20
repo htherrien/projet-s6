@@ -17,7 +17,7 @@
  * Configures the SPI bus as a SPI master in mode 3
  * On the ATmega256RFR2 Xplained Pro devkit, the SPI is configured to be used
  * on the EXT5 header:
- *
+ * @code
  *     EXT5         SPI slave
  *     +-----+      +----+
  *     |PIN15|------|SS  |
@@ -26,7 +26,7 @@
  *     |PIN18|------|SCK |
  *     |PIN19|------|GND |
  *     +-----+      +----+ 
- *
+ * @endcode
  * @note No pull-ups are needed
  */
 void SpiInitMaster(void);
